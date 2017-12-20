@@ -1,0 +1,8 @@
+.flipping{
+    -webkit-transition: -webkit-transform .8s ease-in;
+    transition: transform .8s ease-in;
+}
+.flipping:hover{
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
