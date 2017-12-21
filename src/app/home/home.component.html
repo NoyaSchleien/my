@@ -1,9 +1,11 @@
 <div class="container w3-display-container">
   <div class="row">
-    <a [routerLink]="['/record']" title="New Record">
+    <a [routerLink]="['/record']" title="New Record" (mouseover)="zoom()">
     <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
         <img src="assets/icons/record.svg" alt="New Record Icon">
+        <div [class]="zoomAnimation">
         <h3>New Record</h3>
+      </div>
         <p>Start a new recording!</p>
         <p>Steps:</p>
         <div class="w3-container">

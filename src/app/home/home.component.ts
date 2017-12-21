@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  zoomAnimation:string;
   constructor() { }
 
   ngOnInit() {
   }
-
+  zoom(){
+  this.zoomAnimation="w3-animate-zoom";
+}
 }
