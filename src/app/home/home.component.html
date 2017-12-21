@@ -1,3 +1,58 @@
-<p>
-  home works!
-</p>
+<div class="container w3-display-container">
+  <div class="row">
+    <a [routerLink]="['/record']" title="New Record">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+        <img src="assets/icons/record.svg" alt="New Record Icon">
+        <h3>New Record</h3>
+        <p>Start a new recording!</p>
+        <p>Steps:</p>
+        <div class="w3-container">
+          <p><span class="w3-badge w3-blue">1</span> Choose the cameras you would like to use</p>
+          <p><span class="w3-badge w3-blue">2</span> Choose the microphones you would like to use</p>
+          <p><span class="w3-badge w3-blue">3</span> Hit the play button</p>
+        </div>
+      </div>
+    </a>
+    <a [routerLink]="['/live']" title="Live Feed">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+        <img src="assets/icons/live.svg" alt="Live Feed Icon">
+      <h3>Live Feed</h3>
+      <p>Watch what is being recorded right now</p>
+      <p>Steps:</p>
+      <div class="w3-container">
+        <p><span class="w3-badge w3-blue">1</span> Line 1 of instructions</p>
+        <p><span class="w3-badge w3-blue">2</span> Line 2 of instructions</p>
+        <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="row">
+      <a [routerLink]="['/play']" title="Play">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+        <img src="assets/icons/play.svg" alt="Play Icon">
+      <h3>Play</h3>
+      <p>Play media</p>
+      <p>Steps:</p>
+      <div class="w3-container">
+        <p><span class="w3-badge w3-blue">1</span> Line 1 of instructions</p>
+        <p><span class="w3-badge w3-blue">2</span> Line 2 of instructions</p>
+        <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
+      </div>
+    </div>
+      </a>
+    <a [routerLink]="['/watch']" title="Watch">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+        <img src="assets/icons/eye.svg" alt="Watch Icon">
+      <h3>Watch</h3>
+      <p>Watch what is happening right now, without recording</p>
+      <p>Steps:</p>
+      <div class="w3-container">
+        <p><span class="w3-badge w3-blue">1</span> Line 1 of instructions</p>
+        <p><span class="w3-badge w3-blue">2</span> Line 2 of instructions</p>
+        <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
+      </div>
+    </div>
+    </a>
+  </div>
+</div>

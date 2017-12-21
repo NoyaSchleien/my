@@ -1,0 +1,14 @@
+.cubeBorder{
+    border:8px solid white;
+}
+h3{
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+    font-family: "Times New Roman", Times, serif;
+    font-style: oblique;
+    font-size: 400%;
+}
+img{
+    width:20%;
+}
