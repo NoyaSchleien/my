@@ -1,9 +1,9 @@
 <div class="container w3-display-container">
   <div class="row">
-    <a [routerLink]="['/record']" title="New Record" (mouseover)="zoom()">
-    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
-        <img src="assets/icons/record.svg" alt="New Record Icon">
-        <div [class]="zoomAnimation">
+    <a [routerLink]="['/record']" title="New Record">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder zoomAnimation">
+        <img class="img-responsive zoomAnimation" src="assets/icons/record.svg" alt="New Record Icon">
+        <div>
         <h3>New Record</h3>
       </div>
         <p>Start a new recording!</p>
@@ -17,7 +17,7 @@
     </a>
     <a [routerLink]="['/live']" title="Live Feed">
     <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
-        <img src="assets/icons/live.svg" alt="Live Feed Icon">
+        <img class="img-responsive" src="assets/icons/live.svg" alt="Live Feed Icon">
       <h3>Live Feed</h3>
       <p>Watch what is being recorded right now</p>
       <p>Steps:</p>
@@ -32,7 +32,7 @@
   <div class="row">
       <a [routerLink]="['/play']" title="Play">
     <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
-        <img src="assets/icons/play.svg" alt="Play Icon">
+        <img class="img-responsive" src="assets/icons/play.svg" alt="Play Icon">
       <h3>Play</h3>
       <p>Play media</p>
       <p>Steps:</p>
@@ -45,7 +45,7 @@
       </a>
     <a [routerLink]="['/watch']" title="Watch">
     <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
-        <img src="assets/icons/eye.svg" alt="Watch Icon">
+        <img class="img-responsive" src="assets/icons/eye.svg" alt="Watch Icon">
       <h3>Watch</h3>
       <p>Watch what is happening right now, without recording</p>
       <p>Steps:</p>
