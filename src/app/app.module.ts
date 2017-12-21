@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PlayModule } from './play/play.module';
 import { WatchModule } from './watch/watch.module';
 import { RecordModule } from './record/record.module';
+import { LiveModule } from './live/live.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RecordModule } from './record/record.module';
     AppRoutingModule,
     PlayModule,
     WatchModule,
-    RecordModule
+    RecordModule,
+    LiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { PlayComponent } from './play/play.component';
 import { RecordComponent } from './record/record.component';
 import { WatchComponent } from './watch/watch.component';
+import { LiveComponent } from './live/live.component';
 
 const routes: Routes = [];
 
@@ -15,6 +16,7 @@ const routes: Routes = [];
       {path: "play", component: PlayComponent },
       {path: "watch", component: WatchComponent },
       {path: "record", component: RecordComponent },
+      {path: "live", component: LiveComponent },
   { path: " ", redirectTo: "home", pathMatch: "full" },
   { path: "**", redirectTo: "home", pathMatch: "full" }
 ])
