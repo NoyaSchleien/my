@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SlidesService } from './slides.service';
 import { ISlide } from './slide';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'hs-slides',
@@ -13,8 +16,21 @@ export class SlidesComponent implements OnInit {
   slides = [];
   currentSlide: ISlide;
   className:string;
+  private _keypress: Subscription;
   
-constructor(private _slidesService: SlidesService) { }
+constructor(private _slidesService: SlidesService) {
+  this._keypress = Observable.fromEvent(document, 'keyup')
+  .subscribe((e: KeyboardEvent) => {
+    switch (e.keyCode) {
+      case 37: //left
+       this.plusSlides(-1)
+        break;
+      case 39: // right
+        this.plusSlides(1)
+        break;
+    }
+  });
+ }
 
   ngOnInit() {
     this.slideIndex=0;
@@ -33,5 +49,9 @@ constructor(private _slidesService: SlidesService) { }
   switchSlide(n: number) {
     this.slideIndex = n;
     this.currentSlide = this.slides[n];
+  }
+  
+  ngOnDestroy(): void {
+    this._keypress.unsubscribe();
   }
 }
