@@ -29,6 +29,16 @@ export class SlidesService {
         "description": "Honolulu",
         "slideIndex":2
       },
+      {
+        "location": "../assets/maps/map4.jpg",
+        "description": "Paris",
+        "slideIndex":3
+      },
+      {
+        "location": "../assets/maps/map5.jpg",
+        "description": "Venice",
+        "slideIndex":4
+      }
     ]
   }
 }
