@@ -1,8 +1,9 @@
 <div class="container w3-display-container">
   <div class="row">
     <a [routerLink]="['/record']" title="New Record">
-    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder zoomAnimation">
-        <img class="img-responsive zoomAnimation" src="assets/icons/record.svg" alt="New Record Icon">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder wrp">
+      <div class="inner-wrp">  
+      <img class="img-responsive" src="assets/icons/record.svg" alt="New Record Icon">
         <div>
         <h3>New Record</h3>
       </div>
@@ -14,9 +15,11 @@
           <p><span class="w3-badge w3-blue">3</span> Hit the play button</p>
         </div>
       </div>
+    </div>
     </a>
     <a [routerLink]="['/live']" title="Live Feed">
-    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder wrp">
+        <div class="inner-wrp">  
         <img class="img-responsive" src="assets/icons/live.svg" alt="Live Feed Icon">
       <h3>Live Feed</h3>
       <p>Watch what is being recorded right now</p>
@@ -27,11 +30,13 @@
         <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
       </div>
     </div>
+  </div>
     </a>
   </div>
   <div class="row">
       <a [routerLink]="['/play']" title="Play">
-    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder wrp">
+        <div class="inner-wrp">  
         <img class="img-responsive" src="assets/icons/play.svg" alt="Play Icon">
       <h3>Play</h3>
       <p>Play media</p>
@@ -42,9 +47,11 @@
         <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
       </div>
     </div>
+  </div>
       </a>
     <a [routerLink]="['/watch']" title="Watch">
-    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder">
+    <div class="col-sm-6 w3-panel w3-hover-border-blue cubeBorder wrp">
+        <div class="inner-wrp">  
         <img class="img-responsive" src="assets/icons/eye.svg" alt="Watch Icon">
       <h3>Watch</h3>
       <p>Watch what is happening right now, without recording</p>
@@ -55,6 +62,7 @@
         <p><span class="w3-badge w3-blue">3</span> Line 3 of instructions</p>
       </div>
     </div>
+  </div>
     </a>
   </div>
 </div>

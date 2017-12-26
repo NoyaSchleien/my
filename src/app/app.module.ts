@@ -12,7 +12,7 @@ import { LiveModule } from './live/live.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,7 @@ import { LiveModule } from './live/live.module';
     PlayModule,
     WatchModule,
     RecordModule,
-    LiveModule
+    LiveModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

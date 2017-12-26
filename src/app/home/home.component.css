@@ -7,11 +7,28 @@ h3{
     text-decoration: underline;
     font-family: "Times New Roman", Times, serif;
     font-style: oblique;
-    font-size: 400%;
+    font-size: 300%;
 }
 img{
     width:20%;
 }
-.zoomAnimation:hover{
-    size: 200%;
-}
+.zoomAnimation {
+    transition-property: transform;
+    transition-duration: .5s;
+  }
+  
+   .wrp {
+    overflow: hidden;
+  }
+  
+  .inner-wrp {
+    padding: 15px;
+    transition-property: transform;
+    transition-duration: .5s;
+    transform: scale(1);
+  }
+  
+  .inner-wrp:hover {
+  
+    transform: scale(1.10);
+  }

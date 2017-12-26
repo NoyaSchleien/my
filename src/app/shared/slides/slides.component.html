@@ -1,0 +1,30 @@
+<div class="container">
+    <h2 style="color: blue">Site Map</h2>
+
+    <div id="myGallery" class="gallery">
+        <div class="gallery-content">
+
+            <!-- main view -->
+            <div class="mySlides">
+                <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
+                <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
+            </div>
+
+            <!-- prev next buttons -->
+            <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)">&#10095;</a>
+
+            <!-- image description -->
+            <div class="caption-container">
+                <h3 id="caption">{{currentSlide.description}}</h3>
+            </div>
+
+            <!-- thumbnails -->
+            <div *ngFor="let slide of slides">
+                <div class="column">
+                    <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
