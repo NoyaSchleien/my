@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SlidesService } from './slides.service';
 import { ISlide } from './slide';
 
@@ -9,28 +9,29 @@ import { ISlide } from './slide';
 })
 export class SlidesComponent implements OnInit {
 
-  slideIndex: number = 0;
+  slideIndex: number;
   slides = [];
-  currentSlide:ISlide;
-
-  constructor(private _slidesService: SlidesService) { }
+  currentSlide: ISlide;
+  className:string;
+  
+constructor(private _slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.slides=this._slidesService.getSlides();
-    this.currentSlide=this.slides[0];
+    this.slideIndex=0;
+    this.slides = this._slidesService.getSlides();
+    this.currentSlide = this.slides[0];
   }
 
   plusSlides(n: number) {
-    let sum= this.slideIndex+n; 
-    if (sum > this.slides.length-1) { this.slideIndex = 0 }
-    else if (sum < 0) { this.slideIndex = this.slides.length-1 }
-    else {this.slideIndex=sum}
+    let sum = this.slideIndex + n;
+    if (sum > this.slides.length - 1) { this.slideIndex = 0 }
+    else if (sum < 0) { this.slideIndex = this.slides.length - 1 }
+    else { this.slideIndex = sum }
     this.currentSlide = this.slides[this.slideIndex];
   }
 
-  switchSlide(n) {
+  switchSlide(n: number) {
     this.slideIndex = n;
-    this.currentSlide=this.slides[n];
+    this.currentSlide = this.slides[n];
   }
-
 }

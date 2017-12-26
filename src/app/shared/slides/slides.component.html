@@ -21,7 +21,11 @@
 
             <!-- thumbnails -->
             <div *ngFor="let slide of slides">
-                <div class="column">
+                <div class="column" *ngIf="slide.slideIndex==slideIndex">
+                    <img class="thumbnail cursor active" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                        [title]="slide.description">
+                </div>
+                <div class="column" *ngIf="slide.slideIndex!=slideIndex">
                     <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
                 </div>
             </div>
