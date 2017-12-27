@@ -2,6 +2,7 @@
     box-sizing: border-box;
   }
   
+ 
    .column {
     float: left;
     width: 25%;
@@ -34,16 +35,43 @@
 
   .mySlides {
     display: block;
+
   }
 
    .mainImg{
       height: 500px;
   }
 
+.overlay{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left: 0;
+  right:0;
+  height: 500px;
+  width:100%;
+  opacity:0;
+  transition: .5s ease;
+}
+
+.camera{
+width:3%;
+}
+.microphone{
+width:3%;
+}
+
+.mySlides:hover .overlay{
+  opacity: 1;
+}
   .cursor {
     cursor: pointer
   }
   
+  a:hover {
+    text-decoration: none;
+}
+
   /* Next & previous arrows */
   .prev,
   .next {
@@ -109,35 +137,33 @@
     opacity: 1;
   }
   
-
-  /* Next & previous thumbnails arrows */
-  .prevThumb,
-  .nextThumb {
-    cursor: pointer;
-    position: absolute;
-    width: auto;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-    left:-20px;
-  }
-  
-  /* Position the "next thumbnail arrow" to the right */
-  .nextThumb {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-    
-  /* On hover, add a black background color with a little bit see-through */
-  .prevThumb:hover,
-  .nextThumb:hover {
-    background-color: rgba(192, 225, 245, 0.8);
-  }
-
   .secondRow{
     margin-top: 8%;
+  }
+
+  .roundButton{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity:0.6;
+    outline: none;
+    box-shadow: 0 9px #999;
+  }
+  .roundButton:hover{
+    opacity:1;
+  }
+
+  .roundButton:active{
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    
   }

@@ -8,6 +8,14 @@
             <div class="mySlides">
                 <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
+            <!-- overlay for the cameras and microphones -->
+            <div class = "overlay">
+                <div class="devices">
+                    <img class="camera" src="../assets/icons/camera.svg">
+                    <img class="microphone" src="../assets/icons/microphone.svg">
+                    <button class="roundButton">a1</button>
+                </div>
+            </div>
             </div>
 
             <!-- prev next arrows -->
@@ -40,13 +48,6 @@
                             </div>
                 </div>
             </div>
-    <!--
-            <div *ngIf="slides.length>4">-->
-                <!-- in case there are more than 4 thumbnails add arrows -->
-                <!--<a class="prevThumb" (click)="plusThumb(-1)" title="previous">&#10094;</a>
-                <a class="nextThumb" (click)="plusThumb(1)" title="next">&#10095;</a>
-            </div>
-        -->
         </div>
     </div>
 </div>
