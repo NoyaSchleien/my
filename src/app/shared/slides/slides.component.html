@@ -10,7 +10,7 @@
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
             </div>
 
-            <!-- prev next buttons -->
+            <!-- prev next arrows -->
             <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
             <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>
 
@@ -20,13 +20,20 @@
             </div>
 
             <!-- thumbnails -->
-            <div *ngFor="let slide of slides">
-                <div class="column" *ngIf="slide.slideIndex==slideIndex">
-                    <img class="thumbnail cursor active" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
-                        [title]="slide.description">
+            <div *ngFor="let slide of slides; let i = index">
+                <div *ngIf="i<4">
+                    <div class="column" *ngIf="slide.slideIndex==slideIndex">
+                        <img class="thumbnail cursor active" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
+                    <div class="column" *ngIf="slide.slideIndex!=slideIndex">
+                        <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
+                    </div>
                 </div>
-                <div class="column" *ngIf="slide.slideIndex!=slideIndex">
-                    <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
+                <div *ngIf="i>=4">
+                    <!-- in case there are more than 4 thumbnails add arrows -->
+                    <a class="prevThumb" (click)="plusThumb(-1)" title="previous">&#10094;</a>
+                    <a class="nextThumb" (click)="plusThumb(1)" title="next">&#10095;</a>
                 </div>
             </div>
         </div>

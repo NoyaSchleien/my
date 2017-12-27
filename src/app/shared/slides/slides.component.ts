@@ -54,4 +54,8 @@ constructor(private _slidesService: SlidesService) {
   ngOnDestroy(): void {
     this._keypress.unsubscribe();
   }
+
+  plusThumb(n:number){
+  
+  }
 }

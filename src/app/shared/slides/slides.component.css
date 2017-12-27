@@ -31,12 +31,11 @@
     width: 90%;
     max-width: 1200px;
   }
-  
-    
-   
+
   .mySlides {
     display: block;
   }
+
    .mainImg{
       height: 500px;
   }
@@ -45,7 +44,7 @@
     cursor: pointer
   }
   
-  /* Next & previous buttons */
+  /* Next & previous arrows */
   .prev,
   .next {
     cursor: pointer;
@@ -63,7 +62,7 @@
     -webkit-user-select: none;
   }
   
-  /* Position the "next button" to the right */
+  /* Position the "next arrow" to the right */
   .next {
     right: 0;
     border-radius: 3px 0 0 3px;
@@ -110,4 +109,33 @@
     opacity: 1;
   }
   
+
+  /* Next & previous thumbnails arrows */
+  .prevThumb,
+  .nextThumb {
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    top: 50%;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
   
+  /* Position the "previous thumbnail arrow" to the left */
+  .nextThumb {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+  }
+    
+  /* On hover, add a black background color with a little bit see-through */
+  .prevThumb:hover,
+  .nextThumb:hover {
+    background-color: rgba(207, 201, 201, 0.8);
+  }
