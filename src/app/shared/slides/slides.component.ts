@@ -15,25 +15,25 @@ export class SlidesComponent implements OnInit {
   slideIndex: number;
   slides = [];
   currentSlide: ISlide;
-  className:string;
+  className: string;
   private _keypress: Subscription;
-  
-constructor(private _slidesService: SlidesService) {
-  this._keypress = Observable.fromEvent(document, 'keyup')
-  .subscribe((e: KeyboardEvent) => {
-    switch (e.keyCode) {
-      case 37: //left
-       this.plusSlides(-1)
-        break;
-      case 39: // right
-        this.plusSlides(1)
-        break;
-    }
-  });
- }
+
+  constructor(private _slidesService: SlidesService) {
+    this._keypress = Observable.fromEvent(document, 'keyup')
+      .subscribe((e: KeyboardEvent) => {
+        switch (e.keyCode) {
+          case 37: //left
+            this.plusSlides(-1)
+            break;
+          case 39: // right
+            this.plusSlides(1)
+            break;
+        }
+      });
+  }
 
   ngOnInit() {
-    this.slideIndex=0;
+    this.slideIndex = 0;
     this.slides = this._slidesService.getSlides();
     this.currentSlide = this.slides[0];
   }
@@ -50,12 +50,12 @@ constructor(private _slidesService: SlidesService) {
     this.slideIndex = n;
     this.currentSlide = this.slides[n];
   }
-  
+
   ngOnDestroy(): void {
     this._keypress.unsubscribe();
   }
 
-  plusThumb(n:number){
-  
+  plusThumb(n: number) {
+
   }
 }

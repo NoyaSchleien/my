@@ -8,14 +8,20 @@
             <div class="mySlides">
                 <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
-            <!-- overlay for the cameras and microphones -->
-            <div class = "overlay">
-                <div class="devices">
-                    <img class="camera" src="../assets/icons/camera.svg">
-                    <img class="microphone" src="../assets/icons/microphone.svg">
-                    <button class="roundButton">a1</button>
+                <!-- overlay for the cameras and microphones -->
+                <div class="overlay">
+                    <span *ngFor="let camera of currentSlide.cameras">
+                        <img class="camera" src="../assets/icons/camera.svg" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left"
+                            [title]="camera.name">
+                    </span>
+                    <span *ngFor="let microphone of currentSlide.microphones">
+                        <img class="microphone" src="../assets/icons/microphone.svg" [style.margin-top.px]="microphone.top" [style.margin-left.px]="microphone.left"
+                            [title]="microphone.name">
+                    </span>
+                    <span *ngFor="let area of currentSlide.areas">
+                        <button class="roundButton" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">{{area.name}}</button>
+                    </span>
                 </div>
-            </div>
             </div>
 
             <!-- prev next arrows -->
@@ -39,13 +45,14 @@
                     </div>
                 </div>
                 <div *ngIf="i>=4">
-                        <div class="column" *ngIf="slide.slideIndex==slideIndex">
-                                <img class="thumbnail cursor active secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
-                                    [title]="slide.description">
-                            </div>
-                            <div class="column" *ngIf="slide.slideIndex!=slideIndex">
-                                <img class="thumbnail cursor secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
-                            </div>
+                    <div class="column" *ngIf="slide.slideIndex==slideIndex">
+                        <img class="thumbnail cursor active secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
+                    <div class="column" *ngIf="slide.slideIndex!=slideIndex">
+                        <img class="thumbnail cursor secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
                 </div>
             </div>
         </div>
