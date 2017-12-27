@@ -25,7 +25,7 @@ export class SlidesService {
           {"name":"m1","top":5,"left":5},{"name":"m2","top":30,"left":15},{"name":"m3","top":65,"left":90},{"name":"m4","top":200, "left":200}
         ],
         "areas":[
-          {"name":"a1","top":10,"left":10},{"name":"a2","top":350, "left":400}
+          {"name":"a1","top":10,"left":10,"areaCameras":[{"c1"},{"c2"},{"c3"}], "areaMicrophones":[{"m1"},{"m2"}]},{"name":"a2","top":350, "left":400,"areaCameras":[{"c4"},{"c5"},{"c6"}], "areaMicrophones":[{"m3"},{"m4"}]}
         ]
       },
       {
@@ -39,7 +39,7 @@ export class SlidesService {
           {"name":"m1","top":5,"left":5},{"name":"m2","top":30,"left":15},{"name":"m3","top":65,"left":90},{"name":"m4","top":200, "left":200}
         ],
         "areas":[
-          {"name":"a1","top":10,"left":10},{"name":"a2","top":50, "left":50}
+          {"name":"a1","top":10,"left":10,"areaCameras":[{"c1"},{"c2"},{"c3"}], "areaMicrophones":[{"m1"},{"m2"}]},{"name":"a2","top":50, "left":50,"areaCameras":[{"c4"},{"c5"},{"c6"}], "areaMicrophones":[{"m3"},{"m4"}]}
         ]
 
       },
@@ -54,7 +54,7 @@ export class SlidesService {
           {"name":"m1","top":5,"left":5},{"name":"m2","top":30,"left":15},{"name":"m3","top":65,"left":90},{"name":"m4","top":200, "left":200}
         ],
         "areas":[
-          {"name":"a1","top":10,"left":10},{"name":"a2","top":50, "left":50}
+          {"name":"a1","top":10,"left":10,"areaCameras":[{"c1"},{"c2"},{"c3"}], "areaMicrophones":[{"m1"},{"m2"}]},{"name":"a2","top":50, "left":50,"areaCameras":[{"c4"},{"c5"},{"c6"}], "areaMicrophones":[{"m3"},{"m4"}]}
         ]
       },
       {
@@ -68,7 +68,7 @@ export class SlidesService {
           {"name":"m1","top":5,"left":5},{"name":"m2","top":30,"left":15},{"name":"m3","top":65,"left":90},{"name":"m4","top":200, "left":200}
         ],
         "areas":[
-          {"name":"a1","top":10,"left":10},{"name":"a2","top":50, "left":50}
+          {"name":"a1","top":10,"left":10,"areaCameras":[{"c1"},{"c2"},{"c3"}], "areaMicrophones":[{"m1"},{"m2"}]},{"name":"a2","top":50, "left":50,"areaCameras":[{"c4"},{"c5"},{"c6"}], "areaMicrophones":[{"m3"},{"m4"}]}
         ]
       },
       {
@@ -82,7 +82,7 @@ export class SlidesService {
           {"name":"m1","top":5,"left":5},{"name":"m2","top":30,"left":15},{"name":"m3","top":65,"left":90},{"name":"m4","top":200, "left":200}
         ],
         "areas":[
-          {"name":"a1","top":10,"left":10},{"name":"a2","top":50, "left":50}
+          {"name":"a1","top":10,"left":10,"areaCameras":[{"c1"},{"c2"},{"c3"}], "areaMicrophones":[{"m1"},{"m2"}]},{"name":"a2","top":50, "left":50,"areaCameras":[{"c4"},{"c5"},{"c6"}], "areaMicrophones":[{"m3"},{"m4"}]}
         ]
       }
     ]

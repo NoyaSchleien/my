@@ -17,6 +17,7 @@ export class SlidesComponent implements OnInit {
   currentSlide: ISlide;
   className: string;
   private _keypress: Subscription;
+  cameraIcon:string;
 
   constructor(private _slidesService: SlidesService) {
     this._keypress = Observable.fromEvent(document, 'keyup')
@@ -36,6 +37,7 @@ export class SlidesComponent implements OnInit {
     this.slideIndex = 0;
     this.slides = this._slidesService.getSlides();
     this.currentSlide = this.slides[0];
+    this.cameraIcon="../assets/icons/camera.svg"
   }
 
   plusSlides(n: number) {

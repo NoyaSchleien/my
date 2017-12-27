@@ -11,7 +11,7 @@
                 <!-- overlay for the cameras and microphones -->
                 <div class="overlay">
                     <span *ngFor="let camera of currentSlide.cameras">
-                        <img class="camera" src="../assets/icons/camera.svg" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left"
+                        <img class="camera" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left"
                             [title]="camera.name">
                     </span>
                     <span *ngFor="let microphone of currentSlide.microphones">
