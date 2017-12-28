@@ -8,10 +8,10 @@
             <div class="mySlides">
                 <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
-                <!-- overlay for the cameras and microphones -->
+                <!-- overlay for the cameras, microphones and areas -->
                 <div class="overlay">
                     <div *ngFor="let camera of currentSlide.cameras">
-                        <img class="camera" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left" [title]="camera.name">
+                        <img class="camera" [id]="camera.number" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left" [title]="camera.name">
                     </div>
                 </div>
                 <div class="overlay">
@@ -21,8 +21,12 @@
                     </div>
                 </div>
                 <div class="overlay">
-                    <div *ngFor="let area of currentSlide.areas">
-                        <button class="roundButton" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">{{area.name}}</button>
+                    <div *ngFor="let area of currentSlide.areas; let i=index">
+                    <label class="switch" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">
+                        <input type="checkbox" (change)="chooseArea(i)">
+                        <span class = "roundButton">{{area.name}}
+                        </span>
+                    </label>
                     </div>
                 </div>
             </div>

@@ -140,8 +140,9 @@ width:3%;
   .secondRow{
     margin-top: 8%;
   }
-
+  
   .roundButton{
+    position: absolute;
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -166,6 +167,17 @@ width:3%;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
-  .roundButton active:{
+  .switch{
+    position:relative;
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+  } 
+  .switch input {display:none;}
+  
+  input:checked + .roundButton{
     background-color: red;
+  }
+  input:focus + .roundButton {
+    box-shadow: 0 0 1px #2196F3;
   }
