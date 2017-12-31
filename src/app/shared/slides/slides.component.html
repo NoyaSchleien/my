@@ -11,12 +11,12 @@
                 <!-- overlay for the cameras, microphones and areas -->
                 <div class="overlay">
                     <div *ngFor="let camera of currentSlide.cameras">
-                        <img class="camera" [id]="camera.number" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left" [title]="camera.name">
+                        <img class="camera" [id]="'camera' + camera.id" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left" [title]="camera.name">
                     </div>
                 </div>
                 <div class="overlay">
                     <div *ngFor="let microphone of currentSlide.microphones">
-                        <img class="microphone" src="../assets/icons/microphone.svg" [style.margin-top.px]="microphone.top" [style.margin-left.px]="microphone.left"
+                        <img class="microphone" [id]="'microphone' + microphone.id" [src]="microphoneIcon" [style.margin-top.px]="microphone.top" [style.margin-left.px]="microphone.left"
                             [title]="microphone.name">
                     </div>
                 </div>
@@ -64,4 +64,6 @@
         </div>
     </div>
 </div>
+<br/>
+<button type="button" id = "playButton" [class]="playButtonClass" (click)="playClicked()">Play</button>
 </div>

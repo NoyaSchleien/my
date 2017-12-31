@@ -64,6 +64,7 @@ width:3%;
 .mySlides:hover .overlay{
   opacity: 1;
 }
+
   .cursor {
     cursor: pointer
   }
@@ -181,3 +182,14 @@ width:3%;
   input:focus + .roundButton {
     box-shadow: 0 0 1px #2196F3;
   }
+  .btn.btn-primary{
+    box-shadow: 0 9px #999;
+    
+  }
+    .btn.btn-primary.active:active{
+    background-color: rgb(8, 133, 211);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  

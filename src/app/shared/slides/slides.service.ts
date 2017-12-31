@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { ISlide } from './slide';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class SlidesService {
+  msgToEdit: any;
 
   constructor() { }
 
@@ -19,7 +20,7 @@ export class SlidesService {
         "description": "Tel Aviv",
         "slideIndex":0,
         "cameras":[
-          {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
+          {"id":0,"name":"c1","top":2,"left":60},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
           ],  
         "microphones":[
           {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}

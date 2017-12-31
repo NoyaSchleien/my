@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SlidesService } from './slides.service';
 import { ISlide } from './slide';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,18 +12,23 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class SlidesComponent implements OnInit {
 
+  areaChose = false;
   slideIndex: number;
   slides = [];
-  camerasChecked = [];
-  microphonesChecked = [];
   areasChecked = [];
   currentSlide: ISlide;
   className: string;
   private _keypress: Subscription;
-  cameraIcon:string;
+  cameraIcon: string;
   cameraRegularIcon: string = "../assets/icons/camera.svg";
   cameraCheckedIcon: string = "../assets/icons/cameraChecked.png";
-  
+  microphoneIcon: string;
+  microphoneRegularIcon: string = "../assets/icons/microphone.svg";
+  microphoneCheckedIcon: string = "../assets/icons/microphoneChecked.png";
+  playButtonClass: string;
+  buttonDisabled: string = "btn btn-primary btn-lg btn-block disabled";
+  buttonActive: string = "btn btn-primary btn-lg btn-block active";
+  @Output() mediaTableEvent = new EventEmitter<any>();
 
   constructor(private _slidesService: SlidesService) {
     this._keypress = Observable.fromEvent(document, 'keyup')
@@ -46,7 +51,9 @@ export class SlidesComponent implements OnInit {
     for (let i = 0; i < this.currentSlide.areas.length; i++) {
       this.areasChecked[i] = false;
     }
-    this.cameraIcon=this.cameraRegularIcon;
+    this.cameraIcon = this.cameraRegularIcon;
+    this.microphoneIcon = this.microphoneRegularIcon;
+    this.playButtonClass = this.buttonDisabled;
   }
 
   plusSlides(n: number) {
@@ -67,22 +74,46 @@ export class SlidesComponent implements OnInit {
   }
 
   chooseArea(i: number) {
-    this.camerasChecked=this.currentSlide.areas[i].areaCameras;
-    this.microphonesChecked=this.currentSlide.areas[i].areaMicrophones;
+    let camerasChecked = this.currentSlide.areas[i].areaCameras;
+    let microphonesChecked = this.currentSlide.areas[i].areaMicrophones;
     if (this.areasChecked[i] == false) {
       this.areasChecked[i] = true;
-      for (let camera of this.camerasChecked){
-        console.log(camera);
-        console.log(document.getElementById("camera"));
-       
-      //  document.getElementById("camera").src=this.cameraCheckedIcon;
-
+      this.areaChose = true;
+      for (let camera of camerasChecked) {
+        let img = document.getElementById("camera" + camera) as HTMLImageElement;
+        img.src = this.cameraCheckedIcon;
       }
+      for (let mic of microphonesChecked) {
+        let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+        img.src = this.microphoneCheckedIcon;
+      }
+      this.playButtonClass = this.buttonActive;
     }
     else {
       this.areasChecked[i] = false;
-      console.log(document.getElementById("i"));
-
+      for (let camera of camerasChecked) {
+        let img = document.getElementById("camera" + camera) as HTMLImageElement;
+        img.src = this.cameraRegularIcon;
       }
-    }}
-      
+      for (let mic of microphonesChecked) {
+        let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+        img.src = this.microphoneRegularIcon;
+      }
+      for (let i = 0; i < this.areasChecked.length; i++) {
+        if (this.areasChecked[i]) {
+          this.areaChose = true;
+          break;
+        }
+        else if (i == this.areasChecked.length - 1) {
+          this.playButtonClass = this.buttonDisabled;
+          this.areaChose = false;
+        }
+      }
+    }
+  }
+  playClicked() {
+    if (this.areaChose) {
+      this.mediaTableEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
+    }
+  }
+}
