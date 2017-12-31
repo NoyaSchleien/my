@@ -28,7 +28,7 @@ export class SlidesComponent implements OnInit {
   playButtonClass: string;
   buttonDisabled: string = "btn btn-primary btn-lg btn-block disabled";
   buttonActive: string = "btn btn-primary btn-lg btn-block active";
-  @Output() mediaTableEvent = new EventEmitter<any>();
+  @Output() areaChosenEvent = new EventEmitter<any>();
 
   constructor(private _slidesService: SlidesService) {
     this._keypress = Observable.fromEvent(document, 'keyup')
@@ -113,7 +113,8 @@ export class SlidesComponent implements OnInit {
   }
   playClicked() {
     if (this.areaChose) {
-      this.mediaTableEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
+      console.log("this.areaChose = "+this.areaChose);
+      this.areaChosenEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
     }
   }
 }
