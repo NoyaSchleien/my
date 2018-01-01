@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SlidesComponent } from './slides/slides.component';
 import { SlidesService } from './slides/slides.service';
 import { MediaTableComponent } from './media-table/media-table.component';
+import { AreaComponent } from './areas/area.component';
 
 @NgModule({
   imports: [
@@ -10,11 +11,13 @@ import { MediaTableComponent } from './media-table/media-table.component';
   ],
   declarations: [
     SlidesComponent,
-    MediaTableComponent
+    MediaTableComponent,
+    AreaComponent
   ],
   exports: [
     SlidesComponent,
-    MediaTableComponent
+    MediaTableComponent,
+    AreaComponent
   ],
   providers: [
     SlidesService

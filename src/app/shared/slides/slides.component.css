@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
   }
-  
  
    .column {
     float: left;
@@ -35,7 +34,6 @@
 
   .mySlides {
     display: block;
-
   }
 
    .mainImg{
@@ -43,27 +41,21 @@
   }
 
 .overlay{
+  display: block;
   position:absolute;
   top:0;
   bottom:0;
   left: 0;
   right:0;
-  height: 500px;
+  height: 100%;
   width:100%;
-  opacity:0;
+  opacity:1;
   transition: .5s ease;
 }
 
-.camera{
-width:3%;
-}
-.microphone{
-width:3%;
-}
-
-.mySlides:hover .overlay{
+/* .mySlides:hover .overlay{
   opacity: 1;
-}
+} */
 
   .cursor {
     cursor: pointer
@@ -116,7 +108,6 @@ width:3%;
     margin-bottom: -4px;
     width: 100%;
 }
-
   
   .caption-container {
     text-align: center;
@@ -124,13 +115,14 @@ width:3%;
     padding: 2px 16px;
     color: white;
   }
+
   h3{
       font-family: Verdana, sans-serif;
   }
+
     .thumbnail {
     opacity: 0.6;
     height: 150px;
-    
       }
   
   .active,
@@ -142,50 +134,10 @@ width:3%;
     margin-top: 8%;
   }
   
-  .roundButton{
-    position: absolute;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 50%;
-    opacity:0.6;
-    outline: none;
-    box-shadow: 0 9px #999;
-  }
-  .roundButton:hover{
-    opacity:1;
-  }
-
-  .roundButton:active{
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  .switch{
-    position:relative;
-    display:inline-block;
-    width: 30px;
-    height: 30px;
-  } 
-  .switch input {display:none;}
-  
-  input:checked + .roundButton{
-    background-color: red;
-  }
-  input:focus + .roundButton {
-    box-shadow: 0 0 1px #2196F3;
-  }
   .btn.btn-primary{
     box-shadow: 0 9px #999;
-    
   }
+
     .btn.btn-primary.active:active{
     background-color: rgb(8, 133, 211);
     box-shadow: 0 5px #666;

@@ -1,0 +1,17 @@
+<div class="images" *ngFor="let camera of cameras">
+  <img class="camera" [id]="'camera' + camera.id" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left"
+    [title]="camera.name">
+</div>
+
+<div class="images" *ngFor="let microphone of microphones">
+  <img class="microphone" [id]="'microphone' + microphone.id" [src]="microphoneIcon" [style.margin-top.px]="microphone.top"
+    [style.margin-left.px]="microphone.left" [title]="microphone.name">
+</div>
+
+<div class="images">
+  <label class="switch" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">
+    <input type="checkbox" (change)="chooseArea(i)">
+    <span class="roundButton">{{area.name}}
+    </span>
+  </label>
+</div>

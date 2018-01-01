@@ -9,61 +9,48 @@
                 <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
                 <!-- overlay for the cameras, microphones and areas -->
-                <div class="overlay">
-                    <div *ngFor="let camera of currentSlide.cameras">
-                        <img class="camera" [id]="'camera' + camera.id" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left" [title]="camera.name">
-                    </div>
-                </div>
-                <div class="overlay">
-                    <div *ngFor="let microphone of currentSlide.microphones">
-                        <img class="microphone" [id]="'microphone' + microphone.id" [src]="microphoneIcon" [style.margin-top.px]="microphone.top" [style.margin-left.px]="microphone.left"
-                            [title]="microphone.name">
-                    </div>
-                </div>
-                <div class="overlay">
-                    <div *ngFor="let area of currentSlide.areas; let i=index">
-                    <label class="switch" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">
-                        <input type="checkbox" (change)="chooseArea(i)">
-                        <span class = "roundButton">{{area.name}}
-                        </span>
-                    </label>
+                <div *ngFor="let area of currentSlide.areas">
+                    <div class="overlay">
+                        <hs-area [area]="area"></hs-area>
                     </div>
                 </div>
             </div>
 
-        <!-- prev next arrows -->
-        <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
-        <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>
 
-        <!-- image description -->
-        <div class="caption-container">
-            <h3 id="caption">{{currentSlide.description}}</h3>
-        </div>
+            <!-- prev next arrows -->
+            <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>
 
-        <!-- thumbnails -->
-        <div *ngFor="let slide of slides; let i = index">
-            <div *ngIf="i<4">
-                <div class="column" *ngIf="slide.slideIndex==slideIndex">
-                    <img class="thumbnail cursor active" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
-                        [title]="slide.description">
-                </div>
-                <div class="column" *ngIf="slide.slideIndex!=slideIndex">
-                    <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
-                </div>
+            <!-- image description -->
+            <div class="caption-container">
+                <h3 id="caption">{{currentSlide.description}}</h3>
             </div>
-            <div *ngIf="i>=4">
-                <div class="column" *ngIf="slide.slideIndex==slideIndex">
-                    <img class="thumbnail cursor active secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
-                        [title]="slide.description">
+
+            <!-- thumbnails -->
+
+            <div *ngFor="let slide of slides; let i = index">
+                <div *ngIf="i<4">
+                    <div class="column" *ngIf="slide.slideIndex==slideIndex">
+                        <img class="thumbnail cursor active" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
+                    <div class="column" *ngIf="slide.slideIndex!=slideIndex">
+                        <img class="thumbnail cursor" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description" [title]="slide.description">
+                    </div>
                 </div>
-                <div class="column" *ngIf="slide.slideIndex!=slideIndex">
-                    <img class="thumbnail cursor secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
-                        [title]="slide.description">
+                <div *ngIf="i>=4">
+                    <div class="column" *ngIf="slide.slideIndex==slideIndex">
+                        <img class="thumbnail cursor active secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
+                    <div class="column" *ngIf="slide.slideIndex!=slideIndex">
+                        <img class="thumbnail cursor secondRow" [src]="slide.location" (click)="switchSlide(slide.slideIndex)" [alt]="slide.description"
+                            [title]="slide.description">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<br/>
-<button type="button" id = "playButton" [class]="playButtonClass" (click)="playClicked()">Play</button>
+    <br/>
+    <button type="button" id="playButton" [class]="playButtonClass" (click)="playClicked()">Play</button>
 </div>

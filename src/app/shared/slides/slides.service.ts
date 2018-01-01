@@ -19,58 +19,80 @@ export class SlidesService {
         "location": "../assets/maps/map1.jpg",
         "description": "Tel Aviv",
         "slideIndex":0,
-        "cameras":[
-          {"id":0,"name":"c1","top":2,"left":60},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
-          ],  
-        "microphones":[
-          {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
-        ],
         "areas":[
-          {"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
-        ]
-      },
-      {
-        "location": "../assets/maps/map2.jpg",
-        "description": "New York",
-        "slideIndex":1,
-        "cameras":[
-          {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
-        ],  
-        "microphones":[
-          {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
+          {"id":5,
+          "name":"a1",
+          "top":10,
+          "left":250,
+          "areaCameras":[
+              {"id":0,"name":"c1","top":10,"left":100},
+              {"id":1,"name":"c2","top":100,"left":100},
+              {"id":2,"name":"c3","top":200,"left":100}
+            ],
+            "areaMicrophones":[
+              {"id":6,"name":"m1","top":300,"left":100},
+              {"id":7,"name":"m2","top":400,"left":100}
+            ]
+          },
+          {"id":2,
+          "name":"a2",
+          "top":150,
+          "left":500,
+          "areaCameras":[
+              {"id":3,"name":"c4","top":70,"left":700},
+              {"id":4,"name":"c5","top":300, "left":700},
+              {"id":5,"name":"c6","top":450,"left":700} 
         ],
-        "areas":[
-          {"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
+        "areaMicrophones":[
+          {"id":8,"name":"m3","top":150,"left":700},
+          {"id":9,"name":"m4","top":350, "left":700}
         ]
-      },
-      {
-        "location": "../assets/maps/map3.jpg",
-        "description": "Honolulu",
-        "slideIndex":2,
-        "cameras":[
-          {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
-        ],  
-        "microphones":[
-          {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
-        ],
-        "areas":[
-          {"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
+        }
         ]
-      },
-      {
-        "location": "../assets/maps/map4.jpg",
-        "description": "Paris",
-        "slideIndex":3,
-        "cameras":[
-          {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
-        ],  
-        "microphones":[
-          {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
-        ],
-        "areas":[
-          {"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
-        ]
-      }
+        }
+      // },
+      // {
+      //   "location": "../assets/maps/map2.jpg",
+      //   "description": "New York",
+      //   "slideIndex":1,
+      //   "cameras":[
+      //     {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
+      //   ],  
+      //   "microphones":[
+      //     {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
+      //   ],
+      //   "areas":[
+      //     {"id":1,"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"id":2,"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
+      //   ]
+      // },
+      // {
+      //   "location": "../assets/maps/map3.jpg",
+      //   "description": "Honolulu",
+      //   "slideIndex":2,
+      //   "cameras":[
+      //     {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
+      //   ],  
+      //   "microphones":[
+      //     {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
+      //   ],
+      //   "areas":[
+      //     {"id":1,"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"id":2,"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
+      //   ]
+      // },
+      // {
+      //   "location": "../assets/maps/map4.jpg",
+      //   "description": "Paris",
+      //   "slideIndex":3,
+      //   "cameras":[
+      //     {"id":0,"name":"c1","top":2,"left":4},{"id":1,"name":"c2","top":20,"left":20},{"id":2,"name":"c3","top":80,"left":50},{"id":3,"name":"c4","top":70,"left":350},{"id":4,"name":"c5","top":90, "left":450},{"id":5,"name":"c6","top":20,"left":90} 
+      //   ],  
+      //   "microphones":[
+      //     {"id":6,"name":"m1","top":5,"left":150},{"id":7,"name":"m2","top":30,"left":100},{"id":8,"name":"m3","top":20,"left":500},{"id":9,"name":"m4","top":200, "left":200}
+      //   ],
+      //   "areas":[
+      //     {"id":1,"name":"a1","top":50,"left":250,"areaCameras":[0,1,2], "areaMicrophones":[6,7]},{"id":2,"name":"a2","top":150, "left":500,"areaCameras":[3,4,5], "areaMicrophones":[8,9]}
+      //   ]
+      // }
       // },
       // {
       //   "location": "../assets/maps/map5.jpg",
