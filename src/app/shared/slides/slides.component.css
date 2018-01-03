@@ -111,7 +111,16 @@
   input:focus + .roundButton {
     box-shadow: 0 0 1px #2196F3;
   }
-
+  input:disabled + .roundButton{
+    opacity:0.6; 
+  }
+input:disabled + .roundButton:hover{
+  cursor: auto;
+}
+input:disabled + .roundButton:active{
+  box-shadow: 0 9px #999;
+  transform:none;
+}
 /* .mySlides:hover .overlay{
   opacity: 1;
 } */
@@ -197,7 +206,7 @@
     box-shadow: 0 9px #999;
   }
 
-    .btn.btn-primary.active:active{
+    .btn.btn-primary:active{
     background-color: rgb(8, 133, 211);
     box-shadow: 0 5px #666;
     transform: translateY(4px);

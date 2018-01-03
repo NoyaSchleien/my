@@ -31,5 +31,7 @@ export class WatchComponent implements OnInit {
       this.areaChose = true;
     }
     console.log("this.areaChose = "+this.areaChose);
+    console.log("this.cameras = "+this.cameras);
+    console.log("this.mic = "+this.microphones);
   }
 }

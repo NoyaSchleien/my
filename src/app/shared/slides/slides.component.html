@@ -33,7 +33,7 @@
                 <div class="overlay">
                     <div *ngFor="let area of currentSlide.areas; let i=index">
                         <label class="switch" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">
-                            <input type="checkbox" (change)="chooseArea(i)">
+                            <input type="checkbox" (change)="chooseArea(i)" [disabled]="areaDisabled">
                             <span class="roundButton" (mouseenter)="showArea(i)" (mouseleave)="hideArea(i)">{{area.name}}
                             </span>
                         </label>
@@ -41,16 +41,17 @@
                     </div>
                 </div>
             </div>
-            {{showThisArea}}
-            <!-- prev next arrows -->
-            <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
-            <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>
-
+            
+            
             <!-- image description -->
             <div class="caption-container">
                 <h3 id="caption">{{currentSlide.description}}</h3>
             </div>
-
+            
+            <div *ngIf="numOfClicks==0">
+            <!-- prev next arrows -->
+            <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>
             <!-- thumbnails -->
 
             <div *ngFor="let slide of slides; let i = index">
@@ -74,8 +75,11 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
     <br/>
-    <button type="button" id="playButton" [class]="playButtonClass" (click)="playClicked()">Play</button>
+    <button type="button" id="playButton" class="btn btn-primary btn-lg btn-block" (click)="playClicked()" title="{{!areaChose?'Please choose an area':''}}" [disabled]="!areaChose">{{playingMedia?"Stop Media and choose a different Area":"Play Media"}}</button>
 </div>
+
+
