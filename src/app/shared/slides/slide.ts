@@ -6,5 +6,7 @@ export interface ISlide {
     location: string;
     description: string;
     slideIndex: number;
-    areas: IArea[]; 
+    areas: IArea[];
+    cameras: ICamera[];
+    microphones: IMicrophone[]; 
 }

@@ -6,7 +6,7 @@ export interface IArea {
     name:string;
     top: number;
     left: number;
-    areaCameras: ICamera[];
-    areaMicrophones: IMicrophone[];
+    areaCameras: number[];
+    areaMicrophones: number[];
 
 }

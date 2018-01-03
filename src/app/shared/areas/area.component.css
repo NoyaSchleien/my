@@ -5,9 +5,20 @@
     .microphone{
     width:3%;
     }
-    .images{
+    .media{
       position: absolute;
+      top:0;
+      bottom:0;
+      left: 0;
+      right:0;
     }
+    .area{
+      position: absolute;
+        top:0;
+        bottom:0;
+        left: 0;
+        right:0;
+       }
     /* .showTitle{
       position:inherit;
     border: 1px solid blue;

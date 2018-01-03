@@ -8,15 +8,40 @@
             <div class="mySlides">
                 <div class="numbertext">{{slideIndex+1}} / {{slides.length}}</div>
                 <img class="mainImg" [src]="currentSlide.location" [title]="currentSlide.description">
+
                 <!-- overlay for the cameras, microphones and areas -->
-                <div *ngFor="let area of currentSlide.areas">
-                    <div class="overlay">
-                        <hs-area [area]="area"></hs-area>
+                <div *ngFor="let camera of currentSlide.cameras">
+                    <div class="overlay2">
+                        <img class="camera" [id]="'camera' + camera.id" [src]="cameraIcon" [style.margin-top.px]="camera.top" [style.margin-left.px]="camera.left"
+                            [title]="camera.name" [style.opacity]="op">
+                    </div>
+                    <div class="overlay2">
+                        <label [id]="'cameraLabel'+ camera.id" [style.margin-top.px]="camera.top+20" [style.margin-left.px]="camera.left" [style.opacity]="op">{{camera.name}}</label>
+                    </div>
+                </div>
+                <div *ngFor="let microphone of currentSlide.microphones">
+                    <div class="overlay2">
+                        <img class="microphone" [id]="'microphone' + microphone.id" [src]="microphoneIcon" [style.margin-top.px]="microphone.top"
+                            [style.margin-left.px]="microphone.left" [title]="microphone.name" [style.opacity]="op">
+                    </div>
+                    <div class="overlay2">
+                        <label [id]="'microphoneLabel'+ microphone.id" [style.margin-top.px]="microphone.top+30" [style.margin-left.px]="microphone.left" [style.opacity]="op">{{microphone.name}}</label>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+                <div class="overlay">
+                    <div *ngFor="let area of currentSlide.areas; let i=index">
+                        <label class="switch" [style.margin-top.px]="area.top" [style.margin-left.px]="area.left" [title]="area.name">
+                            <input type="checkbox" (change)="chooseArea(i)">
+                            <span class="roundButton" (mouseenter)="showArea(i)" (mouseleave)="hideArea(i)">{{area.name}}
+                            </span>
+                        </label>
+
                     </div>
                 </div>
             </div>
-
-
+            {{showThisArea}}
             <!-- prev next arrows -->
             <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
             <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>

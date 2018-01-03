@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener, ElementRef, Renderer } from '@angular/core';
 import { SlidesService } from './slides.service';
 import { ISlide } from './slide';
 import { Subscription } from 'rxjs/Subscription';
@@ -11,22 +11,31 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['./slides.component.css']
 })
 export class SlidesComponent implements OnInit {
-
+ op=0;
   areaChose = false;
+
   slideIndex: number;
   slides = [];
   areasChecked = [];
+
   currentSlide: ISlide;
   className: string;
   playButtonClass: string;
   private _keypress: Subscription;
-  
+
+  cameraIcon: string;
+  cameraRegularIcon: string = "../assets/icons/camera.svg";
+  cameraCheckedIcon: string = "../assets/icons/cameraChecked.png";
+  microphoneIcon: string;
+  microphoneRegularIcon: string = "../assets/icons/microphone.svg";
+  microphoneCheckedIcon: string = "../assets/icons/microphoneChecked.png";
+
   buttonDisabled: string = "btn btn-primary btn-lg btn-block disabled";
   buttonActive: string = "btn btn-primary btn-lg btn-block active";
-  
+
   @Output() areaChosenEvent = new EventEmitter<any>();
 
-  constructor(private _slidesService: SlidesService) {
+  constructor(private _slidesService: SlidesService, private el: ElementRef, private renderer: Renderer) {
     this._keypress = Observable.fromEvent(document, 'keyup')
       .subscribe((e: KeyboardEvent) => {
         switch (e.keyCode) {
@@ -44,10 +53,12 @@ export class SlidesComponent implements OnInit {
     this.slideIndex = 0;
     this.slides = this._slidesService.getSlides();
     this.currentSlide = this.slides[0];
+
     for (let i = 0; i < this.currentSlide.areas.length; i++) {
       this.areasChecked[i] = false;
     }
-    
+    this.cameraIcon = this.cameraRegularIcon;
+    this.microphoneIcon = this.microphoneRegularIcon;
     this.playButtonClass = this.buttonDisabled;
   }
 
@@ -68,10 +79,97 @@ export class SlidesComponent implements OnInit {
     this._keypress.unsubscribe();
   }
 
- 
+  chooseArea(i: number) {
+    let camerasChecked = this.currentSlide.areas[i].areaCameras;
+    let microphonesChecked = this.currentSlide.areas[i].areaMicrophones;
+
+    if (this.areasChecked[i] == false) {
+      this.areasChecked[i] = true;
+      this.areaChose = true;
+      for (let camera of camerasChecked) {
+        let img = document.getElementById("camera" + camera) as HTMLImageElement;
+        img.src = this.cameraCheckedIcon;
+      }
+      for (let mic of microphonesChecked) {
+        let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+        img.src = this.microphoneCheckedIcon;
+      }
+      this.playButtonClass = this.buttonActive;
+    }
+    else {
+      this.areasChecked[i] = false;
+      for (let camera of camerasChecked) {
+        let img = document.getElementById("camera" + camera) as HTMLImageElement;
+        img.src = this.cameraRegularIcon;
+      }
+      for (let mic of microphonesChecked) {
+        let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+        img.src = this.microphoneRegularIcon;
+      }
+      for (let i = 0; i < this.areasChecked.length; i++) {
+        if (this.areasChecked[i]) {
+          this.areaChose = true;
+          break;
+        }
+        else if (i == this.areasChecked.length - 1) {
+          this.playButtonClass = this.buttonDisabled;
+          this.areaChose = false;
+        }
+      }
+    }
+  }
+showArea(i:number){
+  let camerasChecked = this.currentSlide.areas[i].areaCameras;
+  let microphonesChecked = this.currentSlide.areas[i].areaMicrophones;
+  
+  for (let camera of camerasChecked) {
+    let img = document.getElementById("camera" + camera) as HTMLImageElement;
+    img.style.opacity = "1";
+    let label=document.getElementById("cameraLabel"+ camera) as HTMLLabelElement;
+    label.style.opacity="1";
+  }
+  
+  for (let mic of microphonesChecked) {
+    let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+    img.style.opacity = "1";
+    let label=document.getElementById("microphoneLabel"+ mic) as HTMLLabelElement;
+    label.style.opacity="1";
+  }
+}
+
+hideArea(i:number){
+  let camerasChecked = this.currentSlide.areas[i].areaCameras;
+  let microphonesChecked = this.currentSlide.areas[i].areaMicrophones;
+  
+  for (let camera of camerasChecked) {
+    let img = document.getElementById("camera" + camera) as HTMLImageElement;
+    let label=document.getElementById("cameraLabel"+ camera) as HTMLLabelElement;
+    
+    if(this.areasChecked[i]){
+       img.style.opacity="1";
+       label.style.opacity="1";
+        } else {
+          img.style.opacity = "0";
+    label.style.opacity="0";
+        }
+  }
+
+  for (let mic of microphonesChecked) {
+    let img = document.getElementById("microphone" + mic) as HTMLImageElement;
+    let label=document.getElementById("microphoneLabel"+ mic) as HTMLLabelElement;
+    
+    if(this.areasChecked[i]){
+       img.style.opacity="1";
+       label.style.opacity="1";
+      } else{
+        img.style.opacity = "0";
+        label.style.opacity="0";
+      }
+  }
+}
   playClicked() {
     if (this.areaChose) {
-            this.areaChosenEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
+      this.areaChosenEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
     }
   }
 }
