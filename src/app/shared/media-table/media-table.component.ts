@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SlidesService } from '../slides/slides.service';
 import { ISlide } from '../slides/slide';
+import { IMicrophone } from '../slides/microphone';
+import { ICamera } from '../slides/camera';
+import { IConfig } from './config';
+import { MediaTableService } from './media-table.service';
 
 @Component({
   selector: 'hs-media-table',
@@ -9,14 +13,34 @@ import { ISlide } from '../slides/slide';
 })
 export class MediaTableComponent implements OnInit {
 
-  @Input() currentSlide:ISlide;
-  @Input() areasChecked=[];  
-  constructor(private _slidesService: SlidesService) { }
+  @Input() cameras: ICamera[];
+  @Input() microphones: IMicrophone[];
+  configurations: IConfig[];
+  modalStyle: string;
+  defaultConfiguration: IConfig;
+  constructor(private _mediaTableService: MediaTableService) { }
 
   ngOnInit() {
-    console.log(this.currentSlide + " from table");
-    console.log(this.areasChecked + " from table");
-    
-    // this._slidesService.getArea.subscribe((data)=>{console.log(data)})
+    this.configurations = this._mediaTableService.getConfigurations();
+    this.modalStyle = "none";
+    this.getDefault();
+  }
+
+  addNew() {
+    this.modalStyle = "block";
+
+  }
+
+  cancelModal() {
+    this.modalStyle = "none";
+  }
+
+  getDefault() {
+    this.defaultConfiguration = this._mediaTableService.defaultConfig;
+  }
+  changeDefault() { }
+
+  createNewConfig(){
+    console.log("create");
   }
 }

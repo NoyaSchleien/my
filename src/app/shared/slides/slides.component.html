@@ -48,7 +48,7 @@
                 <h3 id="caption">{{currentSlide.description}}</h3>
             </div>
             
-            <div *ngIf="numOfClicks==0">
+            <div *ngIf="numOfClicks==0" [@enterAnimation]>
             <!-- prev next arrows -->
             <a class="prev" (click)="plusSlides(-1)" title="previous">&#10094;</a>
             <a class="next" (click)="plusSlides(1)" title="next">&#10095;</a>

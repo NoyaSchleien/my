@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ISlide } from '../shared/slides/slide';
+import { ICamera } from '../shared/slides/camera';
+import { IMicrophone } from '../shared/slides/microphone';
 
 @Component({
   selector: 'hs-watch',
@@ -8,30 +10,74 @@ import { ISlide } from '../shared/slides/slide';
 })
 export class WatchComponent implements OnInit {
 
-  areaChose = false;
+  areaChose: boolean;
   currentSlide: ISlide;
-  areasChecked = [];
-  cameras = [];
-  microphones = [];
+  areasChecked: boolean[];
+  cameras: ICamera[];
+  camerasId: number[];
+  microphones: IMicrophone[];
+  microphonesId: number[];
 
   constructor() { }
   ngOnInit() {
+    this.areaChose = false;
+    this.currentSlide = null;
+    this.areasChecked = [];
+    this.cameras = [];
+    this.camerasId = [];
+    this.microphones = [];
+    this.microphonesId = [];
   }
 
-  onAreaChosen(obj: any) {
+  onPlayClicked(obj: any) {
     this.currentSlide = obj.cs;
     this.areasChecked = obj.ac;
-    for (let i = 0; i < this.areasChecked.length; i++) {
-      if (this.areasChecked[i]) {
-        this.cameras.push(this.currentSlide.areas[i].areaCameras);
-        this.microphones.push(this.currentSlide.areas[i].areaMicrophones);
-      }
-    }
+
+    this.getMediaId();
+
     if (this.currentSlide) {
       this.areaChose = true;
     }
-    console.log("this.areaChose = "+this.areaChose);
-    console.log("this.cameras = "+this.cameras);
-    console.log("this.mic = "+this.microphones);
+
+    this.setVideo();
+    this.setAudio();
+  }
+
+  getMediaId() {
+    for (let i = 0; i < this.areasChecked.length; i++) {
+      if (this.areasChecked[i]) {
+        for (let camId of this.currentSlide.areas[i].areaCameras) {
+          this.camerasId.push(camId);
+        }
+        for (let micId of this.currentSlide.areas[i].areaMicrophones) {
+          this.microphonesId.push(micId);
+        }
+      }
+    }
+  }
+
+  setVideo() {
+    this.cameras = [];
+    for (let id of this.camerasId) {
+      for (let camera of this.currentSlide.cameras) {
+        if (camera.id == id) {
+          this.cameras.push(camera);
+        }
+      }
+    }
+  }
+
+  setAudio() {
+    this.microphones = [];
+    for (let id of this.microphonesId) {
+      for (let microphone of this.currentSlide.microphones) {
+        if (microphone.id == id) {
+          this.microphones.push(microphone);
+        }
+      }
+    }
+  }
+  onStopClicked() {
+    this.ngOnInit();
   }
 }

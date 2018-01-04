@@ -1,25 +1,104 @@
-<div class="header">
-    <div class="navigation">
-        <ul>
-           <li><a href="#">Media</a>
-                <ul>
-                    <li>
-                        <ul>
-                            <li><a href="#">Camera1</a></li>
-                            <li><a href="#">Camera2</a></li>
-                            <li><a href="#">Camera3</a></li>
-                        </ul>
-                        <a href="#">Video</a>
-                    </li>
-                    <li>
-                        <ul>
-                            <li><a href="#">Microphone1</a></li>
-                            <li><a href="#">Microphone2</a></li>
-                        </ul>
-                        <a href="#">Audio</a></li>
-                </ul>
-            </li>
-        </ul>
+<div class="w3-container">
+    <!-- Dropdown Video -->
+    <div class="w3-dropdown-hover">
+        <div class="w3-display-container">
+            <button id="dropdownVideo" class="w3-button w3-blue w3-hover-indigo">Video</button>
+            <div class="dropdown-content">
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <div *ngFor="let camera of cameras">
+                        <p class="w3-bar-item w3-button">{{camera.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown Audio -->
+    <div class="w3-dropdown-hover">
+        <div class="w3-display-container">
+            <button id="dropdownAudio" class="w3-button w3-blue w3-hover-indigo">Audio</button>
+            <div class="dropdown-content">
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <div *ngFor="let microphone of microphones">
+                        <p class="w3-bar-item w3-button">{{microphone.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown Configurations -->
+    <div class="w3-dropdown-hover">
+        <div class="w3-display-container">
+            <button id="dropdownAudio" class="w3-button w3-blue w3-hover-indigo">Configuration</button>
+            <div class="dropdown-content">
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <div *ngFor="let config of configurations">
+                        <p class="w3-bar-item w3-button">{{config.name}}</p>
+                    </div>
+                    <hr/>
+                    <p class="w3-bar-item w3-button" (click)="addNew()">Add New</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Window - add new configuration -->
+<div id="createModal" class="w3-modal" [style.display]="modalStyle">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-container w3-border-bottom w3-padding-16 w3-light-gray w3-text-blue">
+            <h2>
+                <b>Create a new Configuration</b>
+            </h2>
+        </div>
+
+        <div class="w3-center">
+            <br>
+            <span (click)="cancelModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+        </div>
+
+        <form class="w3-container">
+            <div class="w3-section">
+                <label>
+                    <b>Name</b>
+                </label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter a configuration name" name="confname" required>
+                <label>
+                    <b>Title</b>
+                </label>
+                <input class="w3-input w3-border" type="text" placeholder="Enter a title" name="title">
+                <br/>
+                <label>
+                    <b>Video : </b>
+                </label>
+                <label>
+                    <b>Rows</b>
+                </label>
+                <input type="number" min="1" max="10" name="videoRows" placeholder="1-10" required>&nbsp;&nbsp;
+                <label>
+                    <b>Columns</b>
+                </label>
+                <input type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required>
+                <br/>
+                <br/>
+                <label>
+                    <b>Audio : </b>
+                </label>
+                <label>
+                    <b>Rows</b>
+                </label>
+                <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required>
+                <br/>
+                <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding" type="submit" (click)="createNewConfig()">Add</button>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button (click)="cancelModal()" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
     </div>
 </div>
+</div>
+
+
 

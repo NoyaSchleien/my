@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, HostListener, ElementRef, Renderer } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations'
 import { SlidesService } from './slides.service';
 import { ISlide } from './slide';
 import { Subscription } from 'rxjs/Subscription';
@@ -7,6 +8,20 @@ import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'hs-slides',
+  animations: [
+    trigger(
+      'enterAnimation',[
+        transition(':enter',[
+          style({transform: 'translateX(100%', opacity: 0}),
+          animate('500ms', style({transform: 'translateX(0)', opacity: 1}))
+        ]),
+        transition(':leave',[
+          style({transform: 'translateX(0)', opacity: 1}),
+          animate('500ms', style({transform: 'translateX(100%)', opacity: 0}))
+        ])
+      ]
+    )
+  ],
   templateUrl: './slides.component.html',
   styleUrls: ['./slides.component.css']
 })
@@ -31,7 +46,8 @@ export class SlidesComponent implements OnInit {
   microphoneRegularIcon: string = "../assets/icons/microphone.svg";
   microphoneCheckedIcon: string = "../assets/icons/microphoneChecked.png";
 
-  @Output() areaChosenEvent = new EventEmitter<any>();
+  @Output() playClickedEvent = new EventEmitter<any>();
+  @Output() stopClickedEvent = new EventEmitter<any>();
 
   constructor(private _slidesService: SlidesService, private el: ElementRef, private renderer: Renderer) {
     this._keypress = Observable.fromEvent(document, 'keyup')
@@ -175,12 +191,13 @@ export class SlidesComponent implements OnInit {
     if (this.areaChose) {
       this.numOfClicks += 1;
       if (this.numOfClicks == 1) {
-        this.areaChosenEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
+        this.playClickedEvent.emit({ cs: this.currentSlide, ac: this.areasChecked });
         this.playingMedia = true;
         this.areaDisabled=true;
       }
       else if (this.numOfClicks == 2) {
         this.ngOnInit();
+        this.stopClickedEvent.emit();
       }
     }
   }

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SlidesComponent } from './slides/slides.component';
 import { SlidesService } from './slides/slides.service';
 import { MediaTableComponent } from './media-table/media-table.component';
+import { MediaTableService } from './media-table/media-table.service';
+
 
 @NgModule({
   imports: [
@@ -17,7 +19,8 @@ import { MediaTableComponent } from './media-table/media-table.component';
     MediaTableComponent,
   ],
   providers: [
-    SlidesService
+    SlidesService,
+    MediaTableService
   ]
 })
 export class SharedModule { }
