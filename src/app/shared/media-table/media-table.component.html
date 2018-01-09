@@ -83,11 +83,13 @@
                 </label>
                 <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required [(ngModel)]="configuration.audioRows">
                 <br/>
+                <br/>
+                <input class="w3-check" type="checkbox">
+                <label>Make this your default configuration</label>
+                <br/>
+                <br/>
                 <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding" type="submit" name="formSubmit" (click)="createNewConfig()">Add</button>
             </div>
-            Model: {{configuration|json}}
-            <br>
-            Angular: {{configForm.value|json}}
         </form>
 
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
@@ -96,7 +98,3 @@
     </div>
 </div>
 </div>
-
-
-configuration: {{configuration.name}}
-default: {{defaultConfiguration.name}}

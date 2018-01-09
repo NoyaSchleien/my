@@ -23,7 +23,6 @@ export class MediaTableService {
   }
 
   createNewConfig(newConfig: IConfig) {
-    console.log("from service - config name = " + newConfig.name);
     this.configurations.push(newConfig);
   }
 

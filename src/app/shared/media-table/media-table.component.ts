@@ -17,7 +17,7 @@ export class MediaTableComponent implements OnInit {
   @Input() cameras: ICamera[];
   @Input() microphones: IMicrophone[];
   configurations: IConfig[];
-  configuration: IConfig = null;
+  configuration: any={};
   modalStyle: string;
   defaultConfiguration: IConfig;
 
@@ -27,7 +27,6 @@ export class MediaTableComponent implements OnInit {
     this.configurations = this._mediaTableService.getConfigurations();
     this.modalStyle = "none";
     this.defaultConfiguration=this.getDefault();
-    console.log("default=" + this.defaultConfiguration);
   }
   
   addNew() {
