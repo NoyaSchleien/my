@@ -57,40 +57,37 @@
             <span (click)="cancelModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
         </div>
 
-        <form class="w3-container">
+        <form class="w3-container" #configForm="ngForm">
             <div class="w3-section">
                 <label>
                     <b>Name</b>
                 </label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter a configuration name" name="confname" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter a configuration name" name="confname" required [(ngModel)]="configuration.name">
                 <label>
-                    <b>Title</b>
+                    <b>Description</b>
                 </label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter a title" name="title">
+                <input class="w3-input w3-border" type="text" placeholder="Enter a description" name="description" [(ngModel)]="configuration.description">
                 <br/>
                 <label>
-                    <b>Video : </b>
+                    <b>Video : Rows</b>
                 </label>
-                <label>
-                    <b>Rows</b>
-                </label>
-                <input type="number" min="1" max="10" name="videoRows" placeholder="1-10" required>&nbsp;&nbsp;
+                <input type="number" min="1" max="10" name="videoRows" placeholder="1-10" required [(ngModel)]="configuration.videoRows">&nbsp;&nbsp;
                 <label>
                     <b>Columns</b>
                 </label>
-                <input type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required>
+                <input type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required [(ngModel)]="configuration.videoColumns">
                 <br/>
                 <br/>
                 <label>
-                    <b>Audio : </b>
+                    <b>Audio : Rows</b>
                 </label>
-                <label>
-                    <b>Rows</b>
-                </label>
-                <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required>
+                <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required [(ngModel)]="configuration.audioRows">
                 <br/>
-                <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding" type="submit" (click)="createNewConfig()">Add</button>
+                <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding" type="submit" name="formSubmit" (click)="createNewConfig()">Add</button>
             </div>
+            Model: {{configuration|json}}
+            <br>
+            Angular: {{configForm.value|json}}
         </form>
 
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
@@ -101,4 +98,5 @@
 </div>
 
 
-
+configuration: {{configuration.name}}
+default: {{defaultConfiguration.name}}

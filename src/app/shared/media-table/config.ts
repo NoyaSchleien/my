@@ -1,7 +1,6 @@
 export interface IConfig {
-    id: number;
     name: string;
-    title: string;
+    description: string;
     videoRows:number;
     videoColumns:number;
     audioRows:number;

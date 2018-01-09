@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { SlidesService } from '../slides/slides.service';
 import { ISlide } from '../slides/slide';
 import { IMicrophone } from '../slides/microphone';
@@ -16,31 +17,43 @@ export class MediaTableComponent implements OnInit {
   @Input() cameras: ICamera[];
   @Input() microphones: IMicrophone[];
   configurations: IConfig[];
+  configuration: IConfig = null;
   modalStyle: string;
   defaultConfiguration: IConfig;
+  @ViewChild("configForm") configForm: HTMLFormElement;
+
   constructor(private _mediaTableService: MediaTableService) { }
 
   ngOnInit() {
     this.configurations = this._mediaTableService.getConfigurations();
     this.modalStyle = "none";
-    this.getDefault();
+    this.defaultConfiguration=this.getDefault();
+    console.log("default=" + this.defaultConfiguration);
   }
-
+  
   addNew() {
     this.modalStyle = "block";
-
   }
-
+  
   cancelModal() {
     this.modalStyle = "none";
   }
-
-  getDefault() {
-    this.defaultConfiguration = this._mediaTableService.defaultConfig;
+  
+  getDefault():IConfig {
+    return this._mediaTableService.defaultConfig;
   }
   changeDefault() { }
+  
+  createNewConfig() {
+    console.log("create new config - configuration = " + this.configuration);
+    this._mediaTableService.createNewConfig(this.configuration);
+    this.configurations = this._mediaTableService.getConfigurations();
+    this.modalStyle="none";
+  }
 
-  createNewConfig(){
-    console.log("create");
+  onSubmit() {
+    if (this.configForm["nativeElement"].valid) {
+      console.log("Form Submitted!");
+    }
   }
 }

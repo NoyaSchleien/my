@@ -6,20 +6,15 @@ export class MediaTableService {
 
   defaultConfig: IConfig;
   configurations: IConfig[]=[];
-  id: number;
 
   constructor() {
-    this.id = 1;
     this.defaultConfig = {
-      "id": this.id,
       "name": "2*2",
-      "title": "Default Config",
+      "description": "Default Config",
       "videoRows": 2,
       "videoColumns": 2,
       "audioRows": 1
     }
-    this.id += 1;
-    console.log(this.defaultConfig);
     this.configurations[0]=this.defaultConfig;
   }
 
@@ -28,15 +23,14 @@ export class MediaTableService {
   }
 
   createNewConfig(newConfig: IConfig) {
-    newConfig.id = this.id;
-    this.id += 1;
+    console.log("from service - config name = " + newConfig.name);
     this.configurations.push(newConfig);
   }
 
   updateConfig(beforeConfig: IConfig, afterConfig:IConfig) {
     let index = this.configurations.indexOf(beforeConfig, 0);
     this.configurations[index].name = afterConfig.name;
-    this.configurations[index].title = afterConfig.title;
+    this.configurations[index].description = afterConfig.description;
     this.configurations[index].videoRows = afterConfig.videoRows;
     this.configurations[index].videoColumns = afterConfig.videoColumns;
     this.configurations[index].audioRows = afterConfig.audioRows;
