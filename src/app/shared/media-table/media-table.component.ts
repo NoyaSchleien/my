@@ -20,7 +20,6 @@ export class MediaTableComponent implements OnInit {
   configuration: IConfig = null;
   modalStyle: string;
   defaultConfiguration: IConfig;
-  @ViewChild("configForm") configForm: HTMLFormElement;
 
   constructor(private _mediaTableService: MediaTableService) { }
 
@@ -51,9 +50,9 @@ export class MediaTableComponent implements OnInit {
     this.modalStyle="none";
   }
 
-  onSubmit() {
-    if (this.configForm["nativeElement"].valid) {
-      console.log("Form Submitted!");
-    }
-  }
+  // onSubmit() {
+  //   if (this.configForm["nativeElement"].valid) {
+  //     console.log("Form Submitted!");
+  //   }
+  // }
 }
