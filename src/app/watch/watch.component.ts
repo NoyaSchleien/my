@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ISlide } from '../shared/slides/slide';
 import { ICamera } from '../shared/slides/camera';
 import { IMicrophone } from '../shared/slides/microphone';
+import { IConfig } from '../shared/media-table/config';
 
 @Component({
   selector: 'hs-watch',
@@ -79,5 +80,9 @@ export class WatchComponent implements OnInit {
   }
   onStopClicked() {
     this.ngOnInit();
+  }
+
+  onCofigChosen(config:IConfig){
+    console.log("config = " + config.name);
   }
 }

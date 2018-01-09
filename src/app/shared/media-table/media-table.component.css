@@ -1,0 +1,19 @@
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.modalSubmit{
+    box-shadow: 0 9px #999;
+}
+
+.modalSubmit:active{
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+

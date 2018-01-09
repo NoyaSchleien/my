@@ -30,71 +30,89 @@
     <!-- Dropdown Configurations -->
     <div class="w3-dropdown-hover">
         <div class="w3-display-container">
-            <button id="dropdownAudio" class="w3-button w3-blue w3-hover-indigo">Configuration</button>
-            <div class="dropdown-content">
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <div *ngFor="let config of configurations">
-                        <p class="w3-bar-item w3-button">{{config.name}}</p>
+            <button id="dropdownConfig" class="w3-button w3-blue w3-hover-indigo">Configuration</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <div *ngFor="let config of configurations">
+                    <p class="w3-bar-item w3-button" (click)="onConfigClick(config)">{{config.name}}</p>
+                    <!-- Dropdown second layer -->
+                    <div class="w3-dropdown-hover" style="width:200px">
+                        <div class="w3-display-container">
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown-submenu">
+                                <header class="w3-container w3-blue">
+                                    <h2>{{config.name}}</h2>
+                                </header>
+                                <header class="w3-container w3-pale-blue">
+                                    <h4>{{config.description}}</h4>
+                                </header>
+                                <div class="w3-dropdown-menu w3-bar-item">
+                                    <p tabindex="-1">Video Rows : {{config.videoRows}}</p>
+                                    <p tabindex="-1">Video Columns : {{config.videoColumns}}</p>
+                                    <p tabindex="-1">Audio Rows : {{config.audioRows}}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <hr/>
-                    <p class="w3-bar-item w3-button" (click)="addNew()">Add New</p>
                 </div>
+                <hr/>
+                <p class="w3-bar-item w3-button" (click)="addNew()">Add New</p>
             </div>
         </div>
     </div>
 
-<!-- Modal Window - add new configuration -->
-<div id="createModal" class="w3-modal" [style.display]="modalStyle">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-        <div class="w3-container w3-border-bottom w3-padding-16 w3-light-gray w3-text-blue">
-            <h2>
-                <b>Create a new Configuration</b>
-            </h2>
-        </div>
-
-        <div class="w3-center">
-            <br>
-            <span (click)="cancelModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-        </div>
-
-        <form class="w3-container" #configForm="ngForm">
-            <div class="w3-section">
-                <label>
-                    <b>Name</b>
-                </label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter a configuration name" name="confname" required [(ngModel)]="configuration.name">
-                <label>
-                    <b>Description</b>
-                </label>
-                <input class="w3-input w3-border" type="text" placeholder="Enter a description" name="description" [(ngModel)]="configuration.description">
-                <br/>
-                <label>
-                    <b>Video : Rows</b>
-                </label>
-                <input type="number" min="1" max="10" name="videoRows" placeholder="1-10" required [(ngModel)]="configuration.videoRows">&nbsp;&nbsp;
-                <label>
-                    <b>Columns</b>
-                </label>
-                <input type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required [(ngModel)]="configuration.videoColumns">
-                <br/>
-                <br/>
-                <label>
-                    <b>Audio : Rows</b>
-                </label>
-                <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required [(ngModel)]="configuration.audioRows">
-                <br/>
-                <br/>
-                <input class="w3-check" type="checkbox">
-                <label>Make this your default configuration</label>
-                <br/>
-                <br/>
-                <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding" type="submit" name="formSubmit" (click)="createNewConfig()">Add</button>
+    <!-- Modal Window - add new configuration -->
+    <div id="createModal" class="w3-modal" [style.display]="modalStyle">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+            <div class="w3-container w3-border-bottom w3-padding-16 w3-light-gray w3-text-blue">
+                <h2>
+                    <b>Create a new Configuration</b>
+                </h2>
             </div>
-        </form>
 
-        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-            <button (click)="cancelModal()" type="button" class="w3-button w3-red">Cancel</button>
+            <div class="w3-center">
+                <br>
+                <span (click)="cancelModal()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            </div>
+
+            <form class="w3-container" #configForm="ngForm">
+                <div class="w3-section">
+                    <label>
+                        <b>Name</b>
+                    </label>
+                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter a configuration name" name="confname" required
+                        [(ngModel)]="configuration.name">
+                    <label>
+                        <b>Description</b>
+                    </label>
+                    <input class="w3-input w3-border" type="text" placeholder="Enter a description" name="description" [(ngModel)]="configuration.description">
+                    <br/>
+                    <label>
+                        <b>Video : Rows</b>
+                    </label>
+                    <input type="number" min="1" max="10" name="videoRows" placeholder="1-10" required [(ngModel)]="configuration.videoRows">&nbsp;&nbsp;
+                    <label>
+                        <b>Columns</b>
+                    </label>
+                    <input type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required [(ngModel)]="configuration.videoColumns">
+                    <br/>
+                    <br/>
+                    <label>
+                        <b>Audio : Rows</b>
+                    </label>
+                    <input type="number" min="1" max="10" name="audioRows" placeholder="1-10" required [(ngModel)]="configuration.audioRows">
+                    <br/>
+                    <br/>
+                    <input class="w3-check" type="checkbox" name="isDefault" [(ngModel)]="makeDefault">
+                    <label>Make this your default configuration</label>
+                    <br/>
+                    <br/>
+                    <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding modalSubmit" type="submit" name="formSubmit"
+                        (click)="createNewConfig()">Add</button>
+                </div>
+            </form>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button (click)="cancelModal()" type="button" class="w3-button w3-red">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
 </div>

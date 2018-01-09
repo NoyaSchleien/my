@@ -4,26 +4,29 @@ import { IConfig } from './config';
 @Injectable()
 export class MediaTableService {
 
-  defaultConfig: IConfig;
+  defaultIndex:number;
   configurations: IConfig[]=[];
 
   constructor() {
-    this.defaultConfig = {
+    this.defaultIndex=0;
+    this.configurations[this.defaultIndex] = {
       "name": "2*2",
       "description": "Default Config",
       "videoRows": 2,
       "videoColumns": 2,
       "audioRows": 1
     }
-    this.configurations[0]=this.defaultConfig;
   }
 
   getConfigurations() {
     return this.configurations;
   }
 
-  createNewConfig(newConfig: IConfig) {
+  createNewConfig(newConfig: IConfig, makeDefault:boolean) {
     this.configurations.push(newConfig);
+    if (makeDefault){
+      this.defaultIndex=this.configurations.length-1;
+    }
   }
 
   updateConfig(beforeConfig: IConfig, afterConfig:IConfig) {
