@@ -6,6 +6,8 @@ import { SlidesComponent } from './slides/slides.component';
 import { SlidesService } from './slides/slides.service';
 import { MediaTableComponent } from './media-table/media-table.component';
 import { MediaTableService } from './media-table/media-table.service';
+import { VideoScreenComponent } from './video-screen/video-screen.component';
+import { AudioScreenComponent } from './audio-screen/audio-screen.component';
 
 
 @NgModule({
@@ -16,11 +18,15 @@ import { MediaTableService } from './media-table/media-table.service';
   declarations: [
     SlidesComponent,
     MediaTableComponent,
+    VideoScreenComponent,
+    AudioScreenComponent
   ],
   exports: [
     SlidesComponent,
     MediaTableComponent,
-    FormsModule
+    FormsModule,
+    VideoScreenComponent,
+    AudioScreenComponent
   ],
   providers: [
     SlidesService,

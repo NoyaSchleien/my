@@ -3,11 +3,9 @@
     <div class="w3-dropdown-hover">
         <div class="w3-display-container">
             <button id="dropdownVideo" class="w3-button w3-blue w3-hover-indigo">Video</button>
-            <div class="dropdown-content">
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <div *ngFor="let camera of cameras">
-                        <p class="w3-bar-item w3-button">{{camera.name}}</p>
-                    </div>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <div *ngFor="let camera of cameras">
+                    <p class="w3-bar-item w3-button">{{camera.name}}</p>
                 </div>
             </div>
         </div>
@@ -17,11 +15,9 @@
     <div class="w3-dropdown-hover">
         <div class="w3-display-container">
             <button id="dropdownAudio" class="w3-button w3-blue w3-hover-indigo">Audio</button>
-            <div class="dropdown-content">
-                <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <div *ngFor="let microphone of microphones">
-                        <p class="w3-bar-item w3-button">{{microphone.name}}</p>
-                    </div>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <div *ngFor="let microphone of microphones">
+                    <p class="w3-bar-item w3-button">{{microphone.name}}</p>
                 </div>
             </div>
         </div>
@@ -33,24 +29,30 @@
             <button id="dropdownConfig" class="w3-button w3-blue w3-hover-indigo">Configuration</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
                 <div *ngFor="let config of configurations">
-                    <p class="w3-bar-item w3-button" (click)="onConfigClick(config)">{{config.name}}</p>
-                    <!-- Dropdown second layer -->
-                    <div class="w3-dropdown-hover" style="width:200px">
-                        <div class="w3-display-container">
-                            <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown-submenu">
+                    <button class="w3-bar-item w3-button configFirstLayer" (click)="onConfigClick(config)">{{config.name}}</button>
+                            <div class="w3-display-container configSecondLayer" >
+                            <!-- <div  class="w3-dropdown-content w3-bar-block w3-card-4 dropdown-submenu"> -->
+                            <div  class="w3-bar-block w3-card-4 dropdown-submenu">
                                 <header class="w3-container w3-blue">
                                     <h2>{{config.name}}</h2>
                                 </header>
                                 <header class="w3-container w3-pale-blue">
                                     <h4>{{config.description}}</h4>
                                 </header>
-                                <div class="w3-dropdown-menu w3-bar-item">
+                                <div class="w3-bar-item">
                                     <p tabindex="-1">Video Rows : {{config.videoRows}}</p>
                                     <p tabindex="-1">Video Columns : {{config.videoColumns}}</p>
                                     <p tabindex="-1">Audio Rows : {{config.audioRows}}</p>
-                                </div>
                             </div>
                         </div>
+
+                        <!-- Dropdown second layer -->
+                        <!-- <div class="w3-dropdown-hover" style="width:200px"> -->
+                        <!-- <div class="w3-display-container dropdown-submenu w3-bar-block"> -->
+                        <!-- <div class="w3-dropdown-content w3-bar-block w3-card-4 dropdown-submenu"> -->
+
+                        <!-- </div> -->
+                        <!-- </div> -->
                     </div>
                 </div>
                 <hr/>

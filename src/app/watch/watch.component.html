@@ -2,7 +2,9 @@
 <br/>
 <hs-media-table *ngIf="areaChose" [cameras]="cameras" [microphones]="microphones" (configChosenEvent)="onCofigChosen($event)"></hs-media-table>
 <br/>
+<hs-video-screen *ngIf="areaChose"></hs-video-screen>
 <br/>
+<hs-audio-screen *ngIf="areaChose"></hs-audio-screen>
 <br/>
 <br/>
 <br/>
