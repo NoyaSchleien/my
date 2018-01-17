@@ -1,10 +1,12 @@
 <hs-slides (playClickedEvent) = "onPlayClicked($event)" (stopClickedEvent) = "onStopClicked()"></hs-slides>
 <br/>
-<hs-media-table *ngIf="areaChose" [cameras]="cameras" [microphones]="microphones" (configChosenEvent)="onCofigChosen($event)"></hs-media-table>
+<div *ngIf="areaChose">
+<hs-media-table [cameras]="cameras" [microphones]="microphones" (configChosenEvent)="onCofigChosen($event)"></hs-media-table>
+<br/><br/>
+<hs-audio-screen [microphones]="microphones"></hs-audio-screen>
 <br/>
-<hs-video-screen *ngIf="areaChose"></hs-video-screen>
-<br/>
-<hs-audio-screen *ngIf="areaChose"></hs-audio-screen>
+<hs-video-screen></hs-video-screen>
 <br/>
 <br/>
 <br/>
+</div>

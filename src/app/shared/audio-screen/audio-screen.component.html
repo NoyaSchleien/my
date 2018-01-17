@@ -1,3 +1,23 @@
-<p>
-  audio-screen works!
-</p>
+<div class="double">
+  <div class="container-fluid">
+    <h3 class="w3-text-blue" style="text-shadow:1px 1px 0 #444">Audio</h3>
+    <div class="row w3-blue-grey" id="audioElement">
+      <div *ngFor="let mic of microphones; let i=index">
+        <div class="col-md-6 solid">
+          <span>{{mic.name}}</span>
+          <audio preload id="'audio'+i">
+            Your browser does not support HTML5 Audio!
+          </audio>
+          <button (click)="muteClicked(mic.id)">
+            <img class="soundButton" [id]="'button'+mic.id" [src]="soundIcon">
+          </button>
+          <select name="ears" class="earSelect">
+            <option value="left">Left</option>
+            <option value="Right">Right</option>
+            <option value="Both" selected>Both</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

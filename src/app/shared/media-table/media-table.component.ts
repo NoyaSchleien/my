@@ -23,7 +23,6 @@ export class MediaTableComponent implements OnInit {
   makeDefault:boolean;
   configChosen:IConfig;
   @Output() configChosenEvent:EventEmitter<IConfig>=new EventEmitter<IConfig>();
-
   constructor(private _mediaTableService: MediaTableService) { }
 
   ngOnInit() {
@@ -64,4 +63,13 @@ export class MediaTableComponent implements OnInit {
   //     console.log("Form Submitted!");
   //   }
   // }
+
+  showSecondLayer(i:number){
+let layer=document.getElementById("layer"+i) as HTMLDivElement;
+layer.style.display="block";
+}
+hideSecondLayer(i:number){
+  let layer=document.getElementById("layer" + i) as HTMLDivElement;
+  layer.style.display="none";
+  }
 }
