@@ -16,12 +16,16 @@ export class MediaTableComponent implements OnInit {
   
   @Input() cameras: ICamera[];
   @Input() microphones: IMicrophone[];
+  
   configurations: IConfig[];
   configuration: any={};
   modalStyle: string;
   defaultIndex:number;
   makeDefault:boolean;
   configChosen:IConfig;
+  hasVidRowError:boolean;
+
+
   @Output() configChosenEvent:EventEmitter<IConfig>=new EventEmitter<IConfig>();
   constructor(private _mediaTableService: MediaTableService) { }
 
@@ -31,6 +35,7 @@ export class MediaTableComponent implements OnInit {
     this.defaultIndex=this.getDefaultIndex();
     this.makeDefault=false;
     this.configChosen=this.configurations[this.defaultIndex];
+    this.hasVidRowError=false;
   }
   
   addNew() {
@@ -71,5 +76,12 @@ layer.style.display="block";
 hideSecondLayer(i:number){
   let layer=document.getElementById("layer" + i) as HTMLDivElement;
   layer.style.display="none";
+  }
+
+  validateVideoRows(value){
+    if(value>=1 && value<=10)
+      this.hasVidRowError=false;
+      else
+      this.hasVidRowError=true;
   }
 }

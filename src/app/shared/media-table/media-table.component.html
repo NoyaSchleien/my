@@ -107,26 +107,66 @@
                             <input #confDescription="ngModel" class="form-control" type="text" placeholder="Enter a description" name="description" [(ngModel)]="configuration.description">
                         </div>
                     </div>
-                    <div class="form-froup row">
+                    <div class="form-group row">
                         <div class="col-xs-1 ">
                             <label>
                                 <b>Video :</b>
                             </label>
                         </div>
-                        <div class="col-xs-2" [class.has-error]="vidRow.invalid && vidRow.touched">
+                        <div class="col-xs-2" [class.has-error]="(vidRow.invalid && vidRow.touched)||hasVidRowError">
                             <label class="control-label">
                                 <b>Rows</b>
                             </label>
-                            <input #vidRow="ngModel" class="form-control" type="number" min="1" max="10" name="videoRows" placeholder="1-10" required
-                                [(ngModel)]="configuration.videoRows">&nbsp;&nbsp;
-                            <div *ngIf="vidRow.invalid && vidRow.touched" class="alert alert-danger">
+                            <input #vidRow="ngModel" class="form-control" type="number" min="1" max="10" step="1" name="videoRows" (blur)="validateVideoRows(vidRow.value)"
+                                (change)="validateVideoRows(vidRow.value)" placeholder="1-10" required [(ngModel)]="configuration.videoRows">
+                            <div *ngIf="(vidRow.invalid && vidRow.touched)||hasVidRowError" class="alert alert-danger">
                                 <div *ngIf="vidRow.errors.required">A number of rows between 1-10 is requiered</div>
                                 <div *ngIf="vidRow.errors.min">Mininimum 1 row</div>
                                 <div *ngIf="vidRow.errors.max">Maximum 10 rows</div>
                             </div>
-
+                        </div>
+                        <div class="col-xs-2" [class.has-error]="vidColumn.invalid && vidColumn.touched">
+                            <label class="control-label">
+                                <b>Columns</b>
+                            </label>
+                            <input #vidColumn="ngModel" class="form-control" type="number" min="1" max="10" name="videoColumns" placeholder="1-10" required
+                                [(ngModel)]="configuration.videoColumns">
+                            <div *ngIf="vidColumn.invalid && vidColumn.touched" class="alert alert-danger">
+                                <div *ngIf="vidColumn.errors.required">A number of Columns between 1-10 is requiered</div>
+                                <div *ngIf="vidColumn.errors.min">Mininimum 1 Column</div>
+                                <div *ngIf="vidColumn.errors.max">Maximum 10 Columns</div>
+                            </div>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-xs-1 ">
+                            <label>
+                                <b>Audio :</b>
+                            </label>
+                        </div>
+                        <div class="col-xs-2" [class.has-error]="vidColumn.invalid && vidColumn.touched">
+                            <label class="control-label">
+                                <b>Rows</b>
+                            </label>
+                            <input #audioRow="ngModel" class="form-control" type="number" min="1" max="10" name="audioRows" placeholder="1-10" required
+                                [(ngModel)]="configuration.audioRows">
+                            <div *ngIf="audioRow.invalid && audioRow.touched" class="alert alert-danger">
+                                <div *ngIf="audioRow.errors.required">A number of rows between 1-10 is requiered</div>
+                                <div *ngIf="audioRow.errors.min">Mininimum 1 row</div>
+                                <div *ngIf="audioRow.errors.max">Maximum 10 rows</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="" name="isDefault" [(ngModel)]="makeDefault">Make this your default configuration
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                    <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding modalSubmit" type="submit" name="formSubmit"
+                    (click)="createNewConfig()">Add</button>
+                        </div></div>
                 </form>
             </div>
 
