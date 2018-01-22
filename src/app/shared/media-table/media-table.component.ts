@@ -24,7 +24,8 @@ export class MediaTableComponent implements OnInit {
   makeDefault:boolean;
   configChosen:IConfig;
   hasVidRowError:boolean;
-
+  hasVidColumnError:boolean;
+  hasAudioRowError:boolean;
 
   @Output() configChosenEvent:EventEmitter<IConfig>=new EventEmitter<IConfig>();
   constructor(private _mediaTableService: MediaTableService) { }
@@ -36,6 +37,8 @@ export class MediaTableComponent implements OnInit {
     this.makeDefault=false;
     this.configChosen=this.configurations[this.defaultIndex];
     this.hasVidRowError=false;
+    this.hasVidColumnError=false;
+    this.hasAudioRowError=false;
   }
   
   addNew() {
@@ -84,4 +87,18 @@ hideSecondLayer(i:number){
       else
       this.hasVidRowError=true;
   }
+
+  validateVideoColumns(value){
+    if(value>=1 && value<=10)
+    this.hasVidColumnError=false;
+    else
+    this.hasVidColumnError=true;
+}
+
+validateAudioRows(value){
+  if(value>=1 && value<=10)
+  this.hasAudioRowError=false;
+  else
+  this.hasAudioRowError=true;
+}
 }
