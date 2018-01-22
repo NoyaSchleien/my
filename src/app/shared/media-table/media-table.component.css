@@ -1,136 +1,150 @@
-.modalSubmit{
-    box-shadow: 0 9px #999;
+.modalSubmit {
+  box-shadow: 0 9px #999;
 }
 
-.modalSubmit:active{
-box-shadow: 0 5px #666;
-transform: translateY(4px);
+.modalSubmit:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  ul li {
-    display: block;
-    position: relative;
-    float: left;
-  }
-  li ul { display: none; }
-  
-  ul li button {
-    display: block;
-    padding: 1em;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  
-  /* ul li button:hover { 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: block;
+  position: relative;
+  float: left;
+}
+
+li ul {
+  display: none;
+}
+
+ul li button {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ul li button:hover { 
       background: #2c3e50; 
     } */
 
-  li:hover > ul {
-    display: block;
-    position: absolute;
-  }
-  
-  li:hover li { 
-      float: none; 
-    }
-  
-  /* li:hover button { 
+li:hover>ul {
+  display: block;
+  position: absolute;
+}
+
+li:hover li {
+  float: none;
+}
+
+/* li:hover button { 
       background: #1bc2a2; 
     } */
-  
-  /* li:hover li button:hover { 
+
+/* li:hover li button:hover { 
       background: #2c3e50; 
     } */
-  
-  .main-navigation li ul li { 
-      border-top: 0; 
-    }
- 
-  ul ul ul {
-    left: 100%;
-    top: 0;
-  }
-  ul:before,
-  ul:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-  }
-  
-  ul:after { clear: both; }
 
+.main-navigation li ul li {
+  border-top: 0;
+}
 
-  /* checkbox*/
-  .label-cbx{
+ul ul ul {
+  left: 100%;
+  top: 0;
+}
+
+ul:before, ul:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+ul:after {
+  clear: both;
+}
+
+/* checkbox*/
+
+.label-cbx {
   user-select: none;
   cursor: pointer;
   margin-bottom: 0;
-  }
-
-  input:checked + .checkbox{
-      border-color: #20C2E0;
-  }
-
-  input:checked + .checkbox svg path{
-          fill: #20C2E0;
-        }
-
-        input:checked + .checkbox svg polyline{
-              stroke-dashoffset: 0;
-  }
-  input:checked:hover .checkbox svg path{
-          stroke-dashoffset: 0;
 }
 
-  .checkbox{
-    position:relative;
-    top:2px;
-    float: left;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #C8CCD4;
-    border-radius: 3px;
-  }
-  .checkbox svg{
+input:checked+.checkbox {
+  border-color: #20C2E0;
+}
+
+input:checked+.checkbox svg path {
+  fill: #20C2E0;
+}
+
+input:checked+.checkbox svg polyline {
+  stroke-dashoffset: 0;
+}
+
+input:checked:hover .checkbox svg path {
+  stroke-dashoffset: 0;
+}
+
+.checkbox {
+  position: relative;
+  top: 2px;
+  float: left;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #C8CCD4;
+  border-radius: 3px;
+}
+
+.checkbox svg {
   position: absolute;
   top: -2px;
   left: -2px;
-  }
-  .checkbox svg path{
-        fill: none;
-        stroke: #20C2E0;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 71px;
-        stroke-dashoffset: 71px;
-        transition: all .6s ease;
-      }
-      .checkbox svg polyline{
-        fill: none;
-        stroke: #FFF;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 18px;
-        stroke-dashoffset: 18px;
-        transition: all .3s ease;
-      }
-   .cntr label span{
-    pointer-events: none;
-    vertical-align: middle;
-   }
-.cntr{
-  position:absolute;
+}
+
+.checkbox svg path {
+  fill: none;
+  stroke: #20C2E0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 71px;
+  stroke-dashoffset: 71px;
+  transition: all .6s ease;
+}
+
+.checkbox svg polyline {
+  fill: none;
+  stroke: #FFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 18px;
+  stroke-dashoffset: 18px;
+  transition: all .3s ease;
+}
+
+.cntr label span {
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+.cntr {
+  position: absolute;
   text-align: center;
 }
-.invisible{
-  position:absolute;
+
+.invisible {
+  position: absolute;
   z-index: -1;
   opacity: 0;
 }
