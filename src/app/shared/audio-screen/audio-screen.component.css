@@ -20,8 +20,8 @@
   width: 30px;
 }
 
-.earSelect {
-  color: black;
+.earsSelect {
+  vertical-align: middle;
 }
 
 /* Trying to style a nice mute button */
@@ -59,4 +59,16 @@ transition: margin .2s cubic-bezier(0.4,0.0,1,1),width .2s cubic-bezier(0.4,0.0,
 cursor: pointer;
 outline: 0;
 }
+
+.micName{
+  color:white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.0em;
+  vertical-align: middle;
+}
+
+.top-buffer{
+  margin-top: 5px;
+}
+
 
