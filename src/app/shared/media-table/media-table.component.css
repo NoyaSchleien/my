@@ -79,39 +79,41 @@ ul:after {
   margin-bottom: 0;
 }
 
-input:checked+.checkbox {
+.label-cbx input:checked + .checkbox {
   border-color: #20C2E0;
 }
 
-input:checked+.checkbox svg path {
+.label-cbx input:checked + .checkbox svg path {
   fill: #20C2E0;
 }
 
-input:checked+.checkbox svg polyline {
+.label-cbx input:checked + .checkbox svg polyline {
   stroke-dashoffset: 0;
 }
 
-input:checked:hover .checkbox svg path {
+.label-cbx:hover .checkbox svg path {
   stroke-dashoffset: 0;
 }
 
-.checkbox {
+.label-cbx .checkbox {
   position: relative;
   top: 2px;
   float: left;
+  margin-right: 8px;
   width: 20px;
   height: 20px;
   border: 2px solid #C8CCD4;
   border-radius: 3px;
+  margin-top: 0;
 }
 
-.checkbox svg {
+.label-cbx .checkbox svg {
   position: absolute;
   top: -2px;
   left: -2px;
 }
 
-.checkbox svg path {
+.label-cbx .checkbox svg path {
   fill: none;
   stroke: #20C2E0;
   stroke-width: 2;
@@ -119,10 +121,10 @@ input:checked:hover .checkbox svg path {
   stroke-linejoin: round;
   stroke-dasharray: 71px;
   stroke-dashoffset: 71px;
-  transition: all .6s ease;
+  transition: all 0.6s ease;
 }
 
-.checkbox svg polyline {
+.label-cbx .checkbox svg polyline {
   fill: none;
   stroke: #FFF;
   stroke-width: 2;
@@ -130,21 +132,18 @@ input:checked:hover .checkbox svg path {
   stroke-linejoin: round;
   stroke-dasharray: 18px;
   stroke-dashoffset: 18px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
-.cntr label span {
+.label-cbx > span {
   pointer-events: none;
   vertical-align: middle;
-}
-
-.cntr {
-  position: absolute;
-  text-align: center;
 }
 
 .invisible {
   position: absolute;
   z-index: -1;
+  width: 0;
+  height: 0;
   opacity: 0;
 }

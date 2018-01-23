@@ -1,25 +1,62 @@
-.double{
+.double {
   border-style: double;
 }
-.solid{
+
+.solid {
   border-right: 6px solid silver;
 }
-#audioElement{
-    color:#fff;
-    font-size:100%;
-    font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight:300;
-    letter-spacing:.025rem;
-    line-height:1.618;
-    padding:1rem 0;
+
+#audioElement {
+  color: #fff;
+  font-size: 100%;
+  font-family: "Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: .025rem;
+  line-height: 1.618;
+  padding: 1rem 0;
 }
 
-.soundButton{
-  width:30px;
-}
-.earSelect{
-  color:black;
+.soundButton {
+  width: 30px;
 }
 
+.earSelect {
+  color: black;
+}
 
- 
+/* Trying to style a nice mute button */
+
+.ytp-button:not([aria-disabled=true]):not([disabled]):not([aria-hidden=true]) {
+  cursor: pointer;
+}
+
+.ytp-button {
+  height: 100%;
+  opacity: .9;
+  display: inline-block;
+  width: 36px;
+  transition: opacity .1s cubic-bezier(0.4, 0.0, 1, 1);
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.ytp-button:focus, .ytp-button {
+  outline: 0;
+}
+
+.ytp-volume-panel {
+display: inline-block;
+width: 0;
+height: 100%;
+transition: margin .2s cubic-bezier(0.4,0.0,1,1),width .2s cubic-bezier(0.4,0.0,1,1);
+cursor: pointer;
+outline: 0;
+}
+
