@@ -160,4 +160,10 @@ ul:after {
   cursor: pointer;
 border-radius: 12px;
 vertical-align: middle;
+box-shadow: 0 6px #999;
+}
+.updateDeleteButtons:active{
+background-color: grey;
+box-shadow: 0 3px #666;
+transform: translateY(4px);
 }
