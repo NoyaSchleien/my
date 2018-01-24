@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { SlidesService } from '../slides/slides.service';
 import { ISlide } from '../slides/slide';
 import { IMicrophone } from '../slides/microphone';
@@ -47,31 +47,28 @@ export class MediaTableComponent implements OnInit {
   
   cancelModal() {
     this.modalStyle = "none";
+    this.resetForm();
   }
   
   getDefaultIndex():number {
     return this._mediaTableService.defaultIndex;
   }
-  changeDefault() { }
   
-  createNewConfig() {
+  
+  createNewConfig(configForm:NgForm) {
     console.log("create new config - configuration = " + this.configuration);
     this._mediaTableService.createNewConfig(this.configuration,this.makeDefault);
     this.configurations = this._mediaTableService.getConfigurations();
     this.modalStyle="none";
-    this.configuration={};
+    if (this.makeDefault) this.defaultIndex=this.getDefaultIndex();
+    this.resetForm();
   }
   onConfigClick(config:IConfig){
     this.configChosen=config;this.configChosenEvent.emit(this.configChosen);
 
   }
 
-  // onSubmit() {
-  //   if (this.configForm["nativeElement"].valid) {
-  //     console.log("Form Submitted!");
-  //   }
-  // }
-
+  
   showSecondLayer(i:number){
 let layer=document.getElementById("layer"+i) as HTMLDivElement;
 layer.style.display="block";
@@ -100,5 +97,12 @@ validateAudioRows(value){
   this.hasAudioRowError=false;
   else
   this.hasAudioRowError=true;
+}
+resetForm(){
+  this.configuration={};
+    this.hasVidRowError=false;
+    this.hasVidColumnError=false;
+    this.hasAudioRowError=false;
+    this.makeDefault=false;
 }
 }

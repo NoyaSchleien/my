@@ -22,6 +22,10 @@
 
 .earsSelect {
   vertical-align: middle;
+  border: none;
+}
+.earsSelect label:hover{
+  cursor: pointer;
 }
 
 /* Trying to style a nice mute button */
