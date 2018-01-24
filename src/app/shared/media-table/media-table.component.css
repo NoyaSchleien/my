@@ -79,15 +79,15 @@ ul:after {
   margin-bottom: 0;
 }
 
-.label-cbx input:checked + .checkbox {
+.label-cbx input:checked+.checkbox {
   border-color: #20C2E0;
 }
 
-.label-cbx input:checked + .checkbox svg path {
+.label-cbx input:checked+.checkbox svg path {
   fill: #20C2E0;
 }
 
-.label-cbx input:checked + .checkbox svg polyline {
+.label-cbx input:checked+.checkbox svg polyline {
   stroke-dashoffset: 0;
 }
 
@@ -135,7 +135,7 @@ ul:after {
   transition: all 0.3s ease;
 }
 
-.label-cbx > span {
+.label-cbx>span {
   pointer-events: none;
   vertical-align: middle;
 }
@@ -148,7 +148,7 @@ ul:after {
   opacity: 0;
 }
 
-.updateDeleteButtons{
+.updateDeleteButtons {
   background-color: lightgrey;
   border: none;
   color: white;
@@ -158,12 +158,22 @@ ul:after {
   font-size: 10px;
   margin: 4px 20px;
   cursor: pointer;
-border-radius: 12px;
-vertical-align: middle;
-box-shadow: 0 6px #999;
+  border-radius: 12px;
+  vertical-align: middle;
+  box-shadow: 0 6px #999;
 }
-.updateDeleteButtons:active{
-background-color: grey;
-box-shadow: 0 3px #666;
-transform: translateY(4px);
+
+.updateDeleteButtons:active {
+  background-color: grey;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+.addButton:hover {
+  box-shadow: 0 6px #999;
+}
+
+.addButton:active {
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
 }
