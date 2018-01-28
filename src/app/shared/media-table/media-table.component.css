@@ -151,7 +151,7 @@ ul:after {
 .updateDeleteButtons {
   background-color: lightgrey;
   border: none;
-  color: white;
+  color: blue;
   padding: 20px;
   text-align: center;
   display: inline-block;

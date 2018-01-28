@@ -34,6 +34,7 @@
                     <div *ngFor="let config of configurations; let i=index">
                         <li>
                             <button class="w3-button">{{config.name}}</button>
+                            <!--Second layer -->
                             <ul>
                                 <div class="w3-card-4" style="width:300%;">
                                     <li>
@@ -42,10 +43,10 @@
                                                 <h2>{{config.name}}</h2>
                                             </div>
                                             <div class="w3-quarter">
-                                                <button class="updateDeleteButtons">Update</button>
+                                                <button class="updateDeleteButtons" (click)="createUpdateModal(config)">Update</button>
                                             </div>
                                             <div class="w3-quarter">
-                                                <button class="updateDeleteButtons">Delete</button>
+                                                <button class="updateDeleteButtons" (click)="deleteConfig(config)">Delete</button>
                                             </div>
                                         </div>
                                     </li>
@@ -78,7 +79,7 @@
         </li>
     </ul>
 
-    <!-- Modal Window - add new configuration -->
+    <!-- Modal Window - Add new configuration -->
     <div id="createModal" class="w3-modal" [style.display]="modalStyle">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container w3-border-bottom w3-padding-16 w3-light-gray w3-text-blue">
@@ -87,20 +88,21 @@
                 </h2>
             </div>
             <div class="w3-center">
-                <br>
+                <br/>
                 <span (click)="cancelModal();configForm.reset()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
             </div>
             <div class="container">
                 <form #configForm="ngForm" (ngSubmit)="createNewConfig(configForm);configForm.reset()">
 
-                    <div class="form-group row" [class.has-error]="confname.invalid && confname.touched">
+                    <div class="form-group row" [class.has-error]="(confname.invalid && confname.touched)||!nameKeyValid">
                         <div class="col-xs-6">
                             <label class="control-label">
                                 <b>Name</b>
                             </label>
-                            <input #confname="ngModel" class="form-control" type="text" placeholder="Enter a configuration name" name="confname" required
+                            <input #confname="ngModel" class="form-control" type="text" placeholder="Enter a configuration name" name="confname" required   (input)="nameKeyValid=true"
                                 [(ngModel)]="configuration.name">
                             <div *ngIf="confname.invalid && confname.touched" class="alert alert-danger">Configuration's name is required</div>
+                            <div *ngIf="!nameKeyValid" class="alert alert-danger">Name must be unique</div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -173,7 +175,7 @@
                                     <polyline points="4 11 8 15 16 6"></polyline>
                                 </svg>
                             </div>
-                            <span> Make this your default configuration</span>
+                            <span>Default configuration</span>
                         </label>
                     </div>
                     <br/>
@@ -192,7 +194,138 @@
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey ">
                 <button (click)="cancelModal();configForm.reset()" type="button " class="w3-button w3-red ">Cancel</button>
             </div>
-            default index = {{defaultIndex}}
         </div>
     </div>
+
+
+    <!-- Modal Window - update configuration -->
+    <div id="updateModal" class="w3-modal" [style.display]="updateModalStyle">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+            <div class="w3-container w3-border-bottom w3-padding-16 w3-light-gray w3-text-blue">
+                <h2>
+                    <b>Update Configuration</b>
+                </h2>
+            </div>
+            <div class="w3-center">
+                <br/>
+                <span (click)="cancelUpdateModal();updateForm.reset()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            </div>
+            <div class="container">
+                <form #updateForm="ngForm" (ngSubmit)="updateConfig(updateForm);updateForm.reset()">
+                    <div class="form-group row" [class.has-error]="(configName.invalid && configName.touched)||!nameKeyValid">
+                        <div class="col-xs-6">
+                            <label class="control-label">
+                                <b>Name</b>
+                            </label>
+                            <input #configName="ngModel" class="form-control" type="text" [placeholder]="updatedConfigBefore?.name" [value]="updatedConfigBefore?.name" name="configName"
+                                required (input)="nameKeyValid=true" [(ngModel)]="updatedConfigAfter.name">
+                                <div *ngIf="confname.invalid && confname.touched" class="alert alert-danger">Configuration's name is required</div>
+                                <div *ngIf="!nameKeyValid" class="alert alert-danger">Name must be unique</div>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <label>
+                                <b>Description</b>
+                            </label>
+                            <input #configDescription="ngModel" class="form-control" type="text" [placeholder]="updatedConfigBefore?.description" [value]="updatedConfigBefore?.description" name="configDescription"
+                                [(ngModel)]="updatedConfigAfter.description">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-1 ">
+                            <label>
+                                <b>Video :</b>
+                            </label>
+                        </div>
+                        <div class="col-xs-2" [class.has-error]="(videoRow.invalid && videoRow.touched)||hasVidRowError">
+                            <label class="control-label">
+                                <b>Rows</b>
+                            </label>
+                            <input #videoRow="ngModel" class="form-control" type="number" min="1" max="10" step="1" name="videoRows" (blur)="validateVideoRows(videoRow.value)"
+                                (input)="validateVideoRows(videoRow.value)" [placeholder]="updatedConfigBefore?.videoRows" [value]="updatedConfigBefore?.videoRows" required
+                                [(ngModel)]="updatedConfigAfter.videoRows">
+                            <div *ngIf="(videoRow?.invalid && videoRow?.touched)||hasVidRowError" class="alert alert-danger">
+                                <div *ngIf="videoRow?.errors?.required">A number of rows between 1-10 is required</div>
+                                <div *ngIf="videoRow?.value<1 && !videoRow?.errors?.required">Mininimum 1 row</div>
+                                <div *ngIf="videoRow?.value>10">Maximum 10 rows</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2" [class.has-error]="(videoColumn.invalid && videoColumn.touched)||hasVidColumnError">
+                            <label class="control-label">
+                                <b>Columns</b>
+                            </label>
+                            <input #videoColumn="ngModel" class="form-control" type="number" min="1" max="10" name="videoColumns" (blur)="validateVideoColumns(videoColumn.value)"
+                                (input)="validateVideoColumns(videoColumn.value)" [placeholder]="updatedConfigBefore?.videoColumns" [value]="updatedConfigBefore?.videoColumns"
+                                required [(ngModel)]="updatedConfigAfter.videoColumns">
+                            <div *ngIf="(videoColumn?.invalid && videoColumn?.touched)||hasVidColumnError" class="alert alert-danger">
+                                <div *ngIf="videoColumn?.errors?.required">A number of Columns between 1-10 is required</div>
+                                <div *ngIf="videoColumn?.value<1 && !videoColumn?.errors?.required">Mininimum 1 Column</div>
+                                <div *ngIf="videoColumn?.value>10">Maximum 10 Columns</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-1 ">
+                            <label>
+                                <b>Audio :</b>
+                            </label>
+                        </div>
+                        <div class="col-xs-2" [class.has-error]="(audRow.invalid && audRow.touched)||hasAudioRowError">
+                            <label class="control-label">
+                                <b>Rows</b>
+                            </label>
+                            <input #audRow="ngModel" class="form-control" type="number" min="1" max="10" name="audRow" (blur)="validateAudioRows(audRow.value)"
+                                (input)="validateAudioRows(audRow.value)" [placeholder]="updatedConfigBefore?.audioRows" [value]="updatedConfigBefore?.audioRows" required
+                                [(ngModel)]="updatedConfigAfter.audioRows">
+                            <div *ngIf="(audRow?.invalid && audRow?.touched)||hasAudioRowError" class="alert alert-danger">
+                                <div *ngIf="audRow?.errors?.required">A number of rows between 1-10 is required</div>
+                                <div *ngIf="audRow?.value<1 && !audRow?.errors?.required">Mininimum 1 row</div>
+                                <div *ngIf="audRow?.value>10">Maximum 10 rows</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <!-- checkbox - make default configuration -->
+                    <div class="cntr">
+                        <label for="cbx2" class="label-cbx">
+                            <input id="cbx2" type="checkbox" class="invisible" [value]="isDefault" [checked]="isDefault" name="defaultCheckBox" [(ngModel)]="makeDefault">
+                            <div class="checkbox">
+                                <svg width="20px" height="20px" viewBox="0 0 20 20">
+                                    <path d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"></path>
+                                    <polyline points="4 11 8 15 16 6"></polyline>
+                                </svg>
+                            </div>
+                            <span>Default configuration</span>
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <!-- submit button -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="w3-button w3-block w3-green w3-hover-teal w3-section w3-padding modalSubmit" type="submit" name="updateFormSubmit"
+                                [disabled]="updateForm.invalid||hasVidRowError||hasVidColumnError||hasAudioRowError" title="{{updateForm.invalid||hasVidRowError||hasVidColumnError||hasAudioRowError?'Please fill out the form correctly':''}}">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey ">
+                <div class="col-xs-4">
+                    <button (click)="cancelUpdateModal();updateForm.reset()" type="button" class="w3-button w3-red ">Cancel</button>
+                </div>
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4">
+                    <button (click)="resetUpdateForm()" type="button" class="w3-button w3-red ">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{nameKeyValid}}
+
+
 </div>
